@@ -1,21 +1,22 @@
 //
-//  VWW_FileReader.m
+//  VWWFileReader.m
 //  ColorBlind
 //
 //  Created by Zakk Hoyt on 7/18/12.
 //
 
-#import "VWW_FileReader.h"
+#import "VWWFileReader.h"
 
-@interface VWW_FileReader ()
+@interface VWWFileReader ()
 @end
 
-@implementation VWW_FileReader
+@implementation VWWFileReader
 
 #pragma mark Custom methods
 
-+(NSMutableArray*)colorsFromFile:(NSString*)path{
-    const NSUInteger kArraySize = 1024;
++(NSMutableOrderedSet*)colorsFromFile:(NSString*)path{
+    //const NSUInteger kArraySize = 1024;
+    
     const NSUInteger kNameIndex = 0;
     const NSUInteger kHexIndex = 1;
     const NSUInteger kRedIndex = 2;
@@ -24,12 +25,14 @@
     const NSUInteger kHueIndex = 5;
     const NSUInteger kNumOfElementsPerLine = 6;
 
-    NSMutableArray* colors = [[[NSMutableArray alloc]initWithCapacity:kArraySize]autorelease];
-    NSError* error = nil;
+    
+    NSError* error;
     
     NSString* fileContents = [NSString stringWithContentsOfFile:path encoding:NSASCIIStringEncoding error:&error];
     
     NSArray* lines = [fileContents componentsSeparatedByString:@"\n"];
+
+    NSMutableOrderedSet* colors = [[NSMutableOrderedSet alloc]initWithCapacity:lines.count];
     
     // Each line in the file will look like this:
     // "name, hex, red, green, blue, hue"
@@ -39,6 +42,7 @@
         NSArray* elements = [line componentsSeparatedByString:@","];
         
         if(elements.count != kNumOfElementsPerLine){
+            VWW_LOG_WARN(@"Invalid number of sections per line");
             continue;
         }
         
@@ -49,18 +53,12 @@
         NSNumber* blue =    (NSNumber*)elements[kBlueIndex];
         NSNumber* hue =     (NSNumber*)elements[kHueIndex];
 
-        // Create VWW_Color object with convenience method
-        VWW_Color* color = [[VWW_Color alloc]initWithName:name hex:hex red:red green:green blue:blue hue:hue];
+        // Create VWWColor object with convenience method
+        VWWColor* color = [[VWWColor alloc]initWithName:name hex:hex red:red green:green blue:blue hue:hue];
         [colors addObject:color];
-        [color release];
-     
-        // check if we have reached our array capacity
-        if(colors.count >= kArraySize){
-            break;
-        }
     }
     
-    NSLog(@"loaded %d colors from colors.csv", colors.count);
+    NSLog(@"Loaded %d colors from colors.csv", colors.count);
     return colors;
 }
 

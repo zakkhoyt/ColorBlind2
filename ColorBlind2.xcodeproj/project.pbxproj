@@ -22,6 +22,12 @@
 		C66E16CC184BDFA10008FAC1 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C66E16AB184BDFA10008FAC1 /* UIKit.framework */; };
 		C66E16D4184BDFA10008FAC1 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = C66E16D2184BDFA10008FAC1 /* InfoPlist.strings */; };
 		C66E16D6184BDFA10008FAC1 /* ColorBlind2Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = C66E16D5184BDFA10008FAC1 /* ColorBlind2Tests.m */; };
+		C66E16F2184BE0990008FAC1 /* VWWColors.m in Sources */ = {isa = PBXBuildFile; fileRef = C66E16EA184BE0990008FAC1 /* VWWColors.m */; };
+		C66E16F3184BE0990008FAC1 /* VWWFileReader.m in Sources */ = {isa = PBXBuildFile; fileRef = C66E16EB184BE0990008FAC1 /* VWWFileReader.m */; };
+		C66E16F4184BE0990008FAC1 /* VWWColor.m in Sources */ = {isa = PBXBuildFile; fileRef = C66E16EC184BE0990008FAC1 /* VWWColor.m */; };
+		C66E16FC184BE2B30008FAC1 /* VWWUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = C66E16FB184BE2B30008FAC1 /* VWWUtility.m */; };
+		C66E1700184BE46E0008FAC1 /* colors_complex.csv in Resources */ = {isa = PBXBuildFile; fileRef = C66E16FE184BE46E0008FAC1 /* colors_complex.csv */; };
+		C66E1701184BE46E0008FAC1 /* colors_simple.csv in Resources */ = {isa = PBXBuildFile; fileRef = C66E16FF184BE46E0008FAC1 /* colors_simple.csv */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -46,16 +52,26 @@
 		C66E16B6184BDFA10008FAC1 /* VWWAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VWWAppDelegate.h; sourceTree = "<group>"; };
 		C66E16B7184BDFA10008FAC1 /* VWWAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VWWAppDelegate.m; sourceTree = "<group>"; };
 		C66E16BA184BDFA10008FAC1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		C66E16BC184BDFA10008FAC1 /* VWWFirstViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VWWFirstViewController.h; sourceTree = "<group>"; };
-		C66E16BD184BDFA10008FAC1 /* VWWFirstViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VWWFirstViewController.m; sourceTree = "<group>"; };
-		C66E16BF184BDFA10008FAC1 /* VWWSecondViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VWWSecondViewController.h; sourceTree = "<group>"; };
-		C66E16C0184BDFA10008FAC1 /* VWWSecondViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VWWSecondViewController.m; sourceTree = "<group>"; };
+		C66E16BC184BDFA10008FAC1 /* VWWFirstViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = VWWFirstViewController.h; path = ../../VWWFirstViewController.h; sourceTree = "<group>"; };
+		C66E16BD184BDFA10008FAC1 /* VWWFirstViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = VWWFirstViewController.m; path = ../../VWWFirstViewController.m; sourceTree = "<group>"; };
+		C66E16BF184BDFA10008FAC1 /* VWWSecondViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = VWWSecondViewController.h; path = ../../VWWSecondViewController.h; sourceTree = "<group>"; };
+		C66E16C0184BDFA10008FAC1 /* VWWSecondViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = VWWSecondViewController.m; path = ../../VWWSecondViewController.m; sourceTree = "<group>"; };
 		C66E16C2184BDFA10008FAC1 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		C66E16C8184BDFA10008FAC1 /* ColorBlind2Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ColorBlind2Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C66E16C9184BDFA10008FAC1 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		C66E16D1184BDFA10008FAC1 /* ColorBlind2Tests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "ColorBlind2Tests-Info.plist"; sourceTree = "<group>"; };
 		C66E16D3184BDFA10008FAC1 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		C66E16D5184BDFA10008FAC1 /* ColorBlind2Tests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ColorBlind2Tests.m; sourceTree = "<group>"; };
+		C66E16EA184BE0990008FAC1 /* VWWColors.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VWWColors.m; sourceTree = "<group>"; };
+		C66E16EB184BE0990008FAC1 /* VWWFileReader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VWWFileReader.m; sourceTree = "<group>"; };
+		C66E16EC184BE0990008FAC1 /* VWWColor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VWWColor.m; sourceTree = "<group>"; };
+		C66E16EE184BE0990008FAC1 /* VWWFileReader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VWWFileReader.h; sourceTree = "<group>"; };
+		C66E16EF184BE0990008FAC1 /* VWWColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VWWColor.h; sourceTree = "<group>"; };
+		C66E16F0184BE0990008FAC1 /* VWWColors.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VWWColors.h; sourceTree = "<group>"; };
+		C66E16FA184BE2B30008FAC1 /* VWWUtility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VWWUtility.h; path = Utilities/VWWUtility.h; sourceTree = "<group>"; };
+		C66E16FB184BE2B30008FAC1 /* VWWUtility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = VWWUtility.m; path = Utilities/VWWUtility.m; sourceTree = "<group>"; };
+		C66E16FE184BE46E0008FAC1 /* colors_complex.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = colors_complex.csv; sourceTree = "<group>"; };
+		C66E16FF184BE46E0008FAC1 /* colors_simple.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = colors_simple.csv; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -115,15 +131,13 @@
 		C66E16AD184BDFA10008FAC1 /* ColorBlind2 */ = {
 			isa = PBXGroup;
 			children = (
-				C66E16B6184BDFA10008FAC1 /* VWWAppDelegate.h */,
-				C66E16B7184BDFA10008FAC1 /* VWWAppDelegate.m */,
-				C66E16B9184BDFA10008FAC1 /* Main.storyboard */,
-				C66E16BC184BDFA10008FAC1 /* VWWFirstViewController.h */,
-				C66E16BD184BDFA10008FAC1 /* VWWFirstViewController.m */,
-				C66E16BF184BDFA10008FAC1 /* VWWSecondViewController.h */,
-				C66E16C0184BDFA10008FAC1 /* VWWSecondViewController.m */,
+				C66E16E6184BE04C0008FAC1 /* Controllers */,
+				C66E16FD184BE46E0008FAC1 /* Documents */,
 				C66E16C2184BDFA10008FAC1 /* Images.xcassets */,
+				C66E16E0184BDFB70008FAC1 /* Models */,
 				C66E16AE184BDFA10008FAC1 /* Supporting Files */,
+				C66E16E9184BE0610008FAC1 /* User Interface */,
+				C66E16F6184BE2420008FAC1 /* Utility */,
 			);
 			path = ColorBlind2;
 			sourceTree = "<group>";
@@ -131,6 +145,8 @@
 		C66E16AE184BDFA10008FAC1 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				C66E16B6184BDFA10008FAC1 /* VWWAppDelegate.h */,
+				C66E16B7184BDFA10008FAC1 /* VWWAppDelegate.m */,
 				C66E16AF184BDFA10008FAC1 /* ColorBlind2-Info.plist */,
 				C66E16B0184BDFA10008FAC1 /* InfoPlist.strings */,
 				C66E16B3184BDFA10008FAC1 /* main.m */,
@@ -155,6 +171,72 @@
 				C66E16D2184BDFA10008FAC1 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		C66E16E0184BDFB70008FAC1 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
+		C66E16E6184BE04C0008FAC1 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				C66E16E7184BE04C0008FAC1 /* GUI */,
+				C66E16E8184BE04C0008FAC1 /* Non-GUI */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		C66E16E7184BE04C0008FAC1 /* GUI */ = {
+			isa = PBXGroup;
+			children = (
+				C66E16BC184BDFA10008FAC1 /* VWWFirstViewController.h */,
+				C66E16BD184BDFA10008FAC1 /* VWWFirstViewController.m */,
+				C66E16BF184BDFA10008FAC1 /* VWWSecondViewController.h */,
+				C66E16C0184BDFA10008FAC1 /* VWWSecondViewController.m */,
+			);
+			path = GUI;
+			sourceTree = "<group>";
+		};
+		C66E16E8184BE04C0008FAC1 /* Non-GUI */ = {
+			isa = PBXGroup;
+			children = (
+				C66E16EF184BE0990008FAC1 /* VWWColor.h */,
+				C66E16EC184BE0990008FAC1 /* VWWColor.m */,
+				C66E16F0184BE0990008FAC1 /* VWWColors.h */,
+				C66E16EA184BE0990008FAC1 /* VWWColors.m */,
+				C66E16EE184BE0990008FAC1 /* VWWFileReader.h */,
+				C66E16EB184BE0990008FAC1 /* VWWFileReader.m */,
+			);
+			path = "Non-GUI";
+			sourceTree = "<group>";
+		};
+		C66E16E9184BE0610008FAC1 /* User Interface */ = {
+			isa = PBXGroup;
+			children = (
+				C66E16B9184BDFA10008FAC1 /* Main.storyboard */,
+			);
+			name = "User Interface";
+			sourceTree = "<group>";
+		};
+		C66E16F6184BE2420008FAC1 /* Utility */ = {
+			isa = PBXGroup;
+			children = (
+				C66E16FA184BE2B30008FAC1 /* VWWUtility.h */,
+				C66E16FB184BE2B30008FAC1 /* VWWUtility.m */,
+			);
+			name = Utility;
+			sourceTree = "<group>";
+		};
+		C66E16FD184BE46E0008FAC1 /* Documents */ = {
+			isa = PBXGroup;
+			children = (
+				C66E16FE184BE46E0008FAC1 /* colors_complex.csv */,
+				C66E16FF184BE46E0008FAC1 /* colors_simple.csv */,
+			);
+			path = Documents;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -235,6 +317,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				C66E16C3184BDFA10008FAC1 /* Images.xcassets in Resources */,
+				C66E1700184BE46E0008FAC1 /* colors_complex.csv in Resources */,
+				C66E1701184BE46E0008FAC1 /* colors_simple.csv in Resources */,
 				C66E16B2184BDFA10008FAC1 /* InfoPlist.strings in Resources */,
 				C66E16BB184BDFA10008FAC1 /* Main.storyboard in Resources */,
 			);
@@ -256,9 +340,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				C66E16B4184BDFA10008FAC1 /* main.m in Sources */,
+				C66E16F3184BE0990008FAC1 /* VWWFileReader.m in Sources */,
 				C66E16B8184BDFA10008FAC1 /* VWWAppDelegate.m in Sources */,
 				C66E16BE184BDFA10008FAC1 /* VWWFirstViewController.m in Sources */,
+				C66E16F2184BE0990008FAC1 /* VWWColors.m in Sources */,
 				C66E16C1184BDFA10008FAC1 /* VWWSecondViewController.m in Sources */,
+				C66E16F4184BE0990008FAC1 /* VWWColor.m in Sources */,
+				C66E16FC184BE2B30008FAC1 /* VWWUtility.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

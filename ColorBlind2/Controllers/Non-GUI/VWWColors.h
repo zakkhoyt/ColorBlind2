@@ -1,5 +1,5 @@
 //
-//  VWW_Colors.h
+//  VWWColors.h
 //  ColorBlind
 //
 //  Created by Zakk Hoyt on 7/23/12.
@@ -7,38 +7,31 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "VWW_Color.h"
-#import "VWW_ColorsProtocol.h"
 
-@interface VWW_Colors : NSObject
+@class VWWColor;
 
-// TODO: convert this NSMutableArray to NSDictionary. With large input files,
-// we are experiencing slow performance at points in the program.
+@interface VWWColors : NSObject
 
-@property (nonatomic, retain) NSMutableArray* colors;
+@property (nonatomic, strong, readonly) NSMutableOrderedSet *colorsSet;
 
-// Returns a VWW_Color at index number index
--(VWW_Color*)colorAtIndex:(NSUInteger)index;
+// Represents the current color used by GUI. Notifications are broadcast when this changes
+@property (nonatomic, readonly) NSInteger currentColorIndex;
 
-// Returns a VWW_Color in self.colors that most closely matches red green blue
--(VWW_Color*)colorFromRed:(NSNumber*)red Green:(NSNumber*)green Blue:(NSNumber*)blue;
+// Returns a VWWColor in self.colors that most closely matches red green blue
+-(VWWColor*)colorFromRed:(NSNumber*)red green:(NSNumber*)green blue:(NSNumber*)blue;
 
 // Returns the closest opposite of currentColor. Math is done on r, g, b
--(VWW_Color*)complimentColor;
+-(VWWColor*)complimentColor;
 
-// Returns the number of VWW_Color instances in our NSMutableArray colors
--(NSUInteger)count;
+// Returns a random VWWColor from our NSMutableArray colors
+-(VWWColor*)randomColor;
 
-// Returns the currently selected color (defaults to first in list until set by calling this method)
--(VWW_Color*)currentColor;
+// Sets the currentColor by color.name. Returns NO if no match is found.
+-(BOOL)setCurrentColor:(VWWColor*)newColor;
 
-// Returns a random VWW_Color from our NSMutableArray colors
--(VWW_Color*)randomColor;
+// Sets the currentColor by finding the closest match from RGBA
+-(BOOL)setCurrentColorFromUIColor:(UIColor*)newColor;
 
-// Sets the currentColor by color.name. Returns nil if no match is found.
--(bool)setCurrentColor:(VWW_Color*)newColor;
 
-// Sets thh currentColor by iterating and comparing color.color (a UIColor property)
--(bool)setCurrentColorFromUIColor:(UIColor*)newColor;
 
 @end

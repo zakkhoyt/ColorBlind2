@@ -1,5 +1,5 @@
 //
-//  VWW_Color.h
+//  VWWColor.h
 //  ColorBlind
 //
 //  Created by Zakk Hoyt on 7/18/12.
@@ -7,7 +7,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface VWW_Color : NSObject
+@interface VWWColor : NSObject
 
 @property (nonatomic, retain) NSString* name; 
 @property (nonatomic, retain) NSString* hex; 

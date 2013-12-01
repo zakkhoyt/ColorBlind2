@@ -1,13 +1,13 @@
 //
-//  VWW_FileReader.h
+//  VWWFileReader.h
 //  ColorBlind
 //
 //  Created by Zakk Hoyt on 7/18/12.
 //
 
 #import <Foundation/Foundation.h>
-#import "VWW_Color.h"
+#import "VWWColor.h"
 
-@interface VWW_FileReader : NSObject
-+(NSMutableArray*)colorsFromFile:(NSString*)path;
+@interface VWWFileReader : NSObject
++(NSMutableOrderedSet*)colorsFromFile:(NSString*)path;
 @end

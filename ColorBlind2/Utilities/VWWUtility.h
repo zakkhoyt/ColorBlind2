@@ -7,9 +7,14 @@
 //
 
 #import <Foundation/Foundation.h>
-#define VWW_MARK NSLog(@"%s:%d", __FUNCTION__, __LINE__);
-#define VWW_MARK_TASK(...) NSLog(@"%s:%d %@", __FUNCTION__, __LINE__, [NSString stringWithFormat:__VA_ARGS__]);
-#define VWW_MARK_TODO(...) NSLog(@"%s:%d TODO: %@", __FUNCTION__, __LINE__, [NSString stringWithFormat:__VA_ARGS__]);
+
+// Some macros for logging
+#define VWW_MARK            NSLog(@"%s:%d", __FUNCTION__, __LINE__);
+#define VWW_LOG(...)        NSLog(@"%s:%d %@", __FUNCTION__, __LINE__, [NSString stringWithFormat:__VA_ARGS__]);
+#define VWW_LOG_TODO(...)   NSLog(@"%s:%d TODO: %@", __FUNCTION__, __LINE__, [NSString stringWithFormat:__VA_ARGS__]);
+#define VWW_LOG_ERROR(...)  NSLog(@"%s:%d *****ERROR: %@", __FUNCTION__, __LINE__, [NSString stringWithFormat:__VA_ARGS__]);
+#define VWW_LOG_WARN(...)   NSLog(@"%s:%d ***** WARNING: %@", __FUNCTION__, __LINE__, [NSString stringWithFormat:__VA_ARGS__]);
+
 
 @interface VWWUtility : NSObject
 
