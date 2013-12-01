@@ -33,12 +33,26 @@
 //    XCTFail(@"No implementation for \"%s\"", __PRETTY_FUNCTION__);
 //}
 
+#pragma mark Private helpers
+
+-(VWWColors*)colors{
+    NSString* path = [[NSBundle mainBundle] pathForResource:@"colors_complex" ofType:@"csv"];
+    NSLog(@"Creating colors object from file %@", path);
+    VWWColors *colors = [[VWWColors alloc]initWithPath:path];
+    XCTAssert(colors, @"Failed to created colors object");
+    return colors;
+}
+
+#pragma mark - Tests
+
 -(void)testReadColorsFile{
 
     NSString* path = [[NSBundle mainBundle] pathForResource:@"colors_complex" ofType:@"csv"];
     NSLog(@"Reading colors from file %@", path);
-    NSOrderedSet *colors = [VWWFileReader colorsFromFile:path];
+    NSDictionary *colors = [VWWFileReader colorsFromFile:path];
     XCTAssert(colors, @"Failed to read colors from %@", path);
+    
+    
     
 //    if(self.colors.count){
 //        self.currentColor = (VWW_Color*)(self.colors)[0];
@@ -51,6 +65,21 @@
 //        return nil;
 //    }
 
+}
+
+-(void)testColorsInit{
+    VWWColors *colors = [self colors];
+    [colors printKeys];
+    [colors printColors];
+}
+
+-(void)testColorAtIindex{
+    VWWColors *colors = [self colors];
+    for(NSInteger index = 0; index < colors.colorsKeys.count; index++){
+        VWWColor *color = [colors colorAtIndex:index];
+        XCTAssert(colors, @"Failed to get color from index: %d", index);
+        color = nil; // deal with compiler warning
+    }
 }
 
 @end

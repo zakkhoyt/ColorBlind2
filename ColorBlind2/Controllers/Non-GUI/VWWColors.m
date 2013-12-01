@@ -11,8 +11,9 @@
 #import "VWWColor.h"
 
 @interface VWWColors ()
-@property (nonatomic, strong, readwrite) NSMutableOrderedSet *colorsSet;
-@property (nonatomic, readwrite) NSInteger currentColorIndex;
+@property (nonatomic, strong, readwrite) NSMutableDictionary *colorsDictionary;
+@property (nonatomic, strong, readwrite) NSArray *colorsKeys;
+@property (nonatomic, readwrite) NSString *currentColorKey;
 @end
 
 @implementation VWWColors
@@ -23,11 +24,21 @@
 -(id)initWithPath:(NSString*)path{
     self = [super init];
     if(self){
-        _colorsSet = [VWWFileReader colorsFromFile:path];
-        if(self.colorsSet == nil || self.colorsSet.count == 0){
+        _colorsDictionary = [[VWWFileReader colorsFromFile:path]mutableCopy];
+        if(self.colorsDictionary == nil || self.colorsDictionary.count == 0){
             VWW_LOG_WARN(@"Failed to load any colors from %@", path);
         } else {
-            self.currentColorIndex = 0;
+            // We have a dictionary, now let's generate and sort the keys
+            NSMutableArray *unsortedColorsKeys = [[NSMutableArray alloc]initWithCapacity:self.colorsDictionary.allValues.count];
+            for(VWWColor *color in self.colorsDictionary.allValues){
+                [unsortedColorsKeys addObject:color.name];
+            }
+            self.colorsKeys = [self sortColors:unsortedColorsKeys];
+            
+            // Set current key
+            if(self.colorsKeys.count){
+                self.currentColorKey = self.colorsKeys[0];
+            }
         }
     }
     else{
@@ -37,38 +48,42 @@
 }
 
 
+// Logs all colors to the console
+-(void)printColors{
+    
+    NSLog(@"********************** Begin printing all colors *************************");
+    for(NSInteger index = 0; index < self.colorsKeys.count; index++){
+        NSString *key = self.colorsKeys[index];
+        VWWColor *color = self.colorsDictionary[key];
+        NSLog(@"Color: %@", color.description);
+    }
+    NSLog(@"********************** End printing all colors *************************");
+}
+-(void)printKeys{
+    
+    NSLog(@"********************** Begin printing all keys *************************");
+    for(NSString *key in self.colorsKeys){
+        NSLog(@"Key: %@", key);
+    }
+    NSLog(@"********************** End printing all keys *************************");
+}
+
+
 -(VWWColor*)colorAtIndex:(NSUInteger)index{
-    if(index < self.colorsSet.count){
-        VWWColor *color = self.colorsSet[index];
+    if(index < self.colorsKeys.count){
+        NSString *key = self.colorsKeys[index];
+        VWWColor *color = self.colorsDictionary[key];
         return color;
     } else {
-        VWW_LOG_WARN(@"Requesting index that is greater than bounds: %d/%d", index, _colorsSet.count);
+        VWW_LOG_WARN(@"Requesting index that is greater than bounds: %d/%d", index, self.colorsDictionary.count);
         return nil;
     }
 }
 
 
--(VWWColor*)colorFromRed:(NSNumber*)red green:(NSNumber*)green blue:(NSNumber*)blue{
-//    if(!self.colors){
-//        NSLog(@"ERROR at %s:%d", __FUNCTION__, __LINE__);
-//        return nil;
-//    }
-//
-//    NSUInteger closestIndex = 0;
-//    NSUInteger smallestDifference = 300; // 100+100+100 is the largest possible difference
-//    
-//    for(NSUInteger index = 0; index < self.colors.count; index++){
-//        VWWColor* color = (self.colors)[index];
-//        NSUInteger diffRed = abs(color.red.integerValue - red.integerValue);
-//        NSUInteger diffGreen = abs(color.green.integerValue - green.integerValue);
-//        NSUInteger diffBlue = abs(color.blue.integerValue - blue.integerValue);
-//        if(diffRed + diffGreen + diffBlue < smallestDifference){
-//            smallestDifference = diffRed + diffGreen + diffBlue;
-//            closestIndex = index;
-//        }
-//    }
-//    
-//    return (VWWColor*)(self.colors)[closestIndex];
+-(VWWColor*)colorFromRed:(float)red green:(float)green blue:(float)blue{
+
+    VWW_LOG_TODO(@"Implement");
     return nil;
 }
 
@@ -76,19 +91,23 @@
 -(VWWColor*)complimentColor{
 //    // TODO: implement
 //    return self.currentColor;
+    VWW_LOG_TODO(@"Implement");
     return nil;
 }
 
 
 
 -(VWWColor*)randomColor{
-    if(!self.colorsSet){
-        VWW_LOG_WARN(@"No colors are loaded.");
-        return nil;
-    }
+//    if(!self.colorsSet){
+//        VWW_LOG_WARN(@"No colors are loaded.");
+//        return nil;
+//    }
+//    
+//    int r = arc4random() % self.colorsSet.count;
+//    return self.colorsSet[r];
+    VWW_LOG_TODO(@"Implement");
+    return nil;
     
-    int r = arc4random() % self.colorsSet.count;
-    return self.colorsSet[r];
 }
 
 
@@ -174,6 +193,40 @@
 
 #pragma mark - Private methods
 
+-(VWWColor*)closestColorFromRed:(float)red green:(float)green blue:(float)blue{
+//    if(!self.colorsDictionary){
+//        VWW_LOG_WARN(@"No colors are loaded")
+//        return nil;
+//    }
+//
+//    
+//    NSUInteger closestIndex = 0;
+//    NSUInteger smallestDifference = 4.0; // 1.0 + 1.0 + 1.0 + 1.0 is the largest possible difference (RGBA)
+//
+////    for(NSUInteger index = 0; index < self.colors.count; index++){
+//    for(NSString *key in self.colorsKeys){
+//        VWWColor* color = self.colorsDictionary[key];
+//        float diffRed = fabs(color.red - red);
+//        float diffGreen = fabs(color.green - green);
+//        float diffBlue = fabs(color.blue - blue);
+//        if(diffRed + diffGreen + diffBlue < smallestDifference){
+//            smallestDifference = diffRed + diffGreen + diffBlue;
+//            closestIndex = index;
+//        }
+//    }
+//    
+//    return (VWWColor*)(self.colors)[closestIndex];
+    return  nil;
+}
+
+
+-(NSArray*)sortColors:(NSArray*)buddies{
+    // Lex sort
+    NSArray *sortedColors = [buddies sortedArrayUsingComparator:^NSComparisonResult(NSString *name1, NSString* name2) {
+        return [name1 compare:name2 options:NSCaseInsensitiveSearch];
+    }];
+    return sortedColors;
+}
 
 
 @end

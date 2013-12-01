@@ -14,7 +14,7 @@
 
 #pragma mark Custom methods
 
-+(NSMutableOrderedSet*)colorsFromFile:(NSString*)path{
++(NSDictionary*)colorsFromFile:(NSString*)path{
     //const NSUInteger kArraySize = 1024;
     
     const NSUInteger kNameIndex = 0;
@@ -32,7 +32,10 @@
     
     NSArray* lines = [fileContents componentsSeparatedByString:@"\n"];
 
-    NSMutableOrderedSet* colors = [[NSMutableOrderedSet alloc]initWithCapacity:lines.count];
+    NSMutableDictionary* colors = [[NSMutableDictionary alloc]initWithCapacity:lines.count];
+    
+    
+    VWW_LOG_TODO(@"add support for alpha and other color properties")
     
     // Each line in the file will look like this:
     // "name, hex, red, green, blue, hue"
@@ -53,13 +56,14 @@
         NSNumber* blue =    (NSNumber*)elements[kBlueIndex];
         NSNumber* hue =     (NSNumber*)elements[kHueIndex];
 
-        // Create VWWColor object with convenience method
-        VWWColor* color = [[VWWColor alloc]initWithName:name hex:hex red:red green:green blue:blue hue:hue];
-        [colors addObject:color];
+        
+        VWWColor* color = [[VWWColor alloc]initWithName:name hex:hex red:red.integerValue green:green.integerValue blue:blue.integerValue hue:hue];
+        colors[name] = color;
+        
     }
     
-    NSLog(@"Loaded %d colors from colors.csv", colors.count);
-    return colors;
+    NSLog(@"Loaded %d colors from colors.csv", colors.allKeys.count);
+    return [NSDictionary dictionaryWithDictionary:colors];
 }
 
 

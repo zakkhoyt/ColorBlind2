@@ -11,20 +11,21 @@
 
 @property (nonatomic, retain) NSString* name; 
 @property (nonatomic, retain) NSString* hex; 
-@property (nonatomic, retain) NSNumber* red;
-@property (nonatomic, retain) NSNumber* green;
-@property (nonatomic, retain) NSNumber* blue;
+@property (nonatomic) float red;
+@property (nonatomic) float green;
+@property (nonatomic) float blue;
 @property (nonatomic, retain) NSNumber* hue;
 @property (nonatomic, retain) UIColor*  color;
 
 
 -(id)initWithName:(NSString*)name 
               hex:(NSString*)hex
-              red:(NSNumber*)red
-            green:(NSNumber*)green
-             blue:(NSNumber*)blue
+              red:(NSUInteger)red
+            green:(NSUInteger)green
+             blue:(NSUInteger)blue
               hue:(NSNumber*)hue;
 
 -(NSString*)description;
+
 
 @end

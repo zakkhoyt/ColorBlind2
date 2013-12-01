@@ -9,5 +9,5 @@
 #import "VWWColor.h"
 
 @interface VWWFileReader : NSObject
-+(NSMutableOrderedSet*)colorsFromFile:(NSString*)path;
++(NSDictionary*)colorsFromFile:(NSString*)path;
 @end

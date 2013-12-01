@@ -12,13 +12,23 @@
 
 @interface VWWColors : NSObject
 
-@property (nonatomic, strong, readonly) NSMutableOrderedSet *colorsSet;
+@property (nonatomic, strong, readonly) NSMutableDictionary *colorsDictionary;
+@property (nonatomic, strong, readonly) NSArray *colorsKeys;
 
-// Represents the current color used by GUI. Notifications are broadcast when this changes
-@property (nonatomic, readonly) NSInteger currentColorIndex;
+// Represents the current color used by GUI. NSNotifications are broadcast when this changes
+@property (nonatomic, readonly) NSString *currentColorKey;
+
+-(id)initWithPath:(NSString*)path;
+    
+// Logs all colors to the console
+-(void)printColors;
+-(void)printKeys;
+
+// Returns color from index
+-(VWWColor*)colorAtIndex:(NSUInteger)index;
 
 // Returns a VWWColor in self.colors that most closely matches red green blue
--(VWWColor*)colorFromRed:(NSNumber*)red green:(NSNumber*)green blue:(NSNumber*)blue;
+-(VWWColor*)colorFromRed:(float)red green:(float)green blue:(float)blue;
 
 // Returns the closest opposite of currentColor. Math is done on r, g, b
 -(VWWColor*)complimentColor;
