@@ -16,25 +16,32 @@
 #import "VWWColorCollectionReusableFlowView.h"
 
 #define VWW_USE_CIRCLE_LAYOUT 1
+//#define VWW_HIDE_BARS_ON_SCROLL 1
 
 static NSString *VWWColorsTableViewControllerHeaderKey = @"headerTitle";
 static NSString *VWWColorsTableViewControllerColorKey = @"color";
 
-@interface VWWColorsCollectionViewController () <UICollectionViewDataSource, UICollectionViewDelegate>
+@interface VWWColorsCollectionViewController () <UICollectionViewDataSource, UICollectionViewDelegate>{
+    BOOL _hideStatusBars;
+    BOOL _useCircleLayout;
+}
 @property (nonatomic, strong) VWWColors *colors;
 @property (nonatomic, strong) VWWColorCollectionViewFlowLayout *flowLayout;
 @property (nonatomic, strong) VWWColorCollectionViewCircleLayout *circleLayout;
 @property (weak, nonatomic) IBOutlet UICollectionView *colorsCollectionView;
 @property (nonatomic, strong) NSMutableArray *datasource;
+@property (nonatomic, strong) NSIndexPath *transitionIndexPath;
 @end
 
 @implementation VWWColorsCollectionViewController
+
+#pragma mark UIViewController overrides
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        // Custom initialization
+        
     }
     return self;
 }
@@ -42,14 +49,17 @@ static NSString *VWWColorsTableViewControllerColorKey = @"color";
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    _useCircleLayout = YES;
     _colors = [VWWColors sharedInstance];
     _flowLayout = [[VWWColorCollectionViewFlowLayout alloc]init];
     _circleLayout = [[VWWColorCollectionViewCircleLayout alloc]init];
-#if defined(VWW_USE_CIRCLE_LAYOUT)
-    _colorsCollectionView.collectionViewLayout = _circleLayout;
-#else
-    _colorsCollectionView.collectionViewLayout = _flowLayout;
-#endif
+    
+    
+    if(_useCircleLayout){
+        _colorsCollectionView.collectionViewLayout = _circleLayout;
+    } else {
+        _colorsCollectionView.collectionViewLayout = _flowLayout;
+    }
     
     _colorsCollectionView.backgroundColor = [UIColor clearColor];
     
@@ -61,6 +71,13 @@ static NSString *VWWColorsTableViewControllerColorKey = @"color";
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+- (BOOL)prefersStatusBarHidden
+{
+    return _hideStatusBars;
+}
+
+
 
 #pragma mark Private methods
 -(void)createDataSource{
@@ -87,85 +104,246 @@ static NSString *VWWColorsTableViewControllerColorKey = @"color";
     }
 }
 
-#if defined(VWW_USE_CIRCLE_LAYOUT)
-#pragma mark UICollectionViewDatasource
 
-- (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView{
-    VWW_LOG(@"returning %d", _datasource.count);
-    return _datasource.count;
-//    return 1;
 
+-(void)addGestureRecognizers{
+    UITapGestureRecognizer *singleTapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(singleTap:)];
+    [self.view addGestureRecognizer:singleTapGestureRecognizer];
+    
+    //    UIPanGestureRecognizer *panGestureRecognizer = [[UIPanGestureRecognizer alloc]initWithTarget:self action:@selector(panAction:)];
+    //    [self.view addGestureRecognizer:panGestureRecognizer];
+}
+-(void)singleTap:(UIGestureRecognizer *)recognizer {
+    if (recognizer.state == UIGestureRecognizerStateEnded && _hideStatusBars) {
+        [self showBars];
+    }
 }
 
-- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{
-    NSMutableDictionary* dictionary = _datasource[section];
-    NSArray* array = dictionary[VWWColorsTableViewControllerColorKey];
-    VWW_LOG(@"returning %d", array.count);
-//    return array.count;
-    return MIN(1, array.count);
-}
-
-- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
-//    VWWColorCollectionViewFlowCell *cell = [_colorsCollectionView dequeueReusableCellWithReuseIdentifier:@"VWWColorCollectionViewFlowCell" forIndexPath:indexPath];
-//    cell.color = [_colors colorAtIndex:indexPath.item];
-//    return cell;
-    VWW_LOG(@"");
-    VWWColorCollectionViewCircleCell *cell = [_colorsCollectionView dequeueReusableCellWithReuseIdentifier:@"VWWColorCollectionViewCircleCell" forIndexPath:indexPath];
-    NSMutableDictionary* dictionary = (_datasource)[indexPath.section];
-    NSArray* array = dictionary[VWWColorsTableViewControllerColorKey];
-    VWWColor* color = array[indexPath.item];
-    cell.color = color;
-    return cell;
-
-}
-
-
-#pragma mark UICollectionViewDelegateFlowLayout
-//- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath{
-//    return CGSizeMake(160, 141);
+//-(void)panAction:(UIGestureRecognizer*)sender{
+//    static CGFloat xStart = 0;
+//
+//    CGPoint translatedPoint = [(UIPanGestureRecognizer*)sender translationInView:self.view];
+//    if(sender.state == UIGestureRecognizerStateBegan) {
+//        xStart = translatedPoint.x;
+//    } else if(sender.state == UIGestureRecognizerStateChanged ||
+//              sender.state == UIGestureRecognizerStateEnded){
+//        CGFloat offset = xStart - translatedPoint.x;
+//        self.circleLayout.offset = offset;
+//    }
+//
+//
+//
+//    NSLog(@"");
+//
 //}
 
+-(void)showBars{
+    
+#if defined(VWW_HIDE_BARS_ON_SCROLL)
+    _hideStatusBars = NO;
+    self.navigationController.navigationBar.hidden = NO;
+    self.tabBarController.tabBar.hidden = NO;
+    [UIView animateWithDuration:0.25 animations:^{
+        [self setNeedsStatusBarAppearanceUpdate];
+        
+        self.navigationController.navigationBar.alpha = 1.0f;
+        self.tabBarController.tabBar.alpha = 1.0f;
+    }];
+#endif
+}
 
-#pragma mark UICollectionViewDelegate
 
 
 
-#pragma mark UIScollviewDelegate
 
-#else
+-(void)hideBars{
+#if defined(VWW_HIDE_BARS_ON_SCROLL)
+    _hideStatusBars = YES;
+    [UIView animateWithDuration:0.25 animations:^{
+        
+        [self setNeedsStatusBarAppearanceUpdate];
+        self.navigationController.navigationBar.alpha = 0.0f;
+        self.tabBarController.tabBar.alpha = 0.0f;
+    } completion:^(BOOL finished) {
+        self.navigationController.navigationBar.hidden = YES;
+        self.tabBarController.tabBar.hidden = YES;
+    }];
+#endif
+}
+
+
+
+
+
+-(void)toggleLayout{
+    if(_useCircleLayout){
+        _useCircleLayout = NO;
+//        [_colorsCollectionView performBatchUpdates:^{
+//            _colorsCollectionView.collectionViewLayout = _flowLayout;
+//        } completion:^(BOOL finished) {
+//            
+//        }];
+        
+//        if(_colorsCollectionView.collectionViewLayout == _flowLayout) return;
+        [_colorsCollectionView setCollectionViewLayout:_flowLayout animated:YES completion:^(BOOL finished) {
+//            _useCircleLayout = NO;
+            NSIndexPath *indexPath = [NSIndexPath indexPathForItem:0 inSection:self.transitionIndexPath.section];
+            NSLog(@"scrolling to %d %d", indexPath.section, indexPath.item);
+            [_colorsCollectionView scrollToItemAtIndexPath:indexPath atScrollPosition:UICollectionViewScrollPositionNone animated:NO];
+        }];
+        //        [_colorsCollectionView startInteractiveTransitionToCollectionViewLayout:_flowLayout completion:^(BOOL completed, BOOL finish) {
+        //
+        //        }];
+    }
+    else {
+        _useCircleLayout = YES;
+//        [_colorsCollectionView performBatchUpdates:^{
+//            _colorsCollectionView.collectionViewLayout = _circleLayout;
+//        } completion:^(BOOL finished) {
+//            
+//        }];
+//        if(_colorsCollectionView.collectionViewLayout == _circleLayout) return;
+        [_colorsCollectionView setCollectionViewLayout:_circleLayout animated:YES completion:^(BOOL finished) {
+//            _useCircleLayout = YES;
+
+//            NSIndexPath *indexPath = [NSIndexPath indexPathForItem:0 inSection:self.transitionIndexPath.section];
+//            NSLog(@"scrolling to %d %d", indexPath.section, indexPath.item);
+//            [_colorsCollectionView scrollToItemAtIndexPath:indexPath atScrollPosition:UICollectionViewScrollPositionNone animated:YES];
+        }];
+        
+        //        [_colorsCollectionView startInteractiveTransitionToCollectionViewLayout:_circleLayout completion:^(BOOL completed, BOOL finish) {
+        //
+        //        }];
+    }
+    
+    [_colorsCollectionView.collectionViewLayout invalidateLayout];
+    
+}
+
+
+#pragma mark IBActions
+- (IBAction)toggleButtonAction:(id)sender {
+    [self toggleLayout];
+}
+
+
+
+//#if defined(VWW_USE_CIRCLE_LAYOUT)
+//#pragma mark UICollectionViewDatasource
+//
+//- (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView{
+//    VWW_LOG(@"returning %d", _datasource.count);
+//    return _datasource.count;
+//
+//
+//}
+//
+//- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{
+//    NSMutableDictionary* dictionary = _datasource[section];
+//    NSArray* array = dictionary[VWWColorsTableViewControllerColorKey];
+//    VWW_LOG(@"returning %d", array.count);
+////    return array.count;
+//    return MIN(1, array.count);
+//}
+//
+//- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
+////    VWWColorCollectionViewFlowCell *cell = [_colorsCollectionView dequeueReusableCellWithReuseIdentifier:@"VWWColorCollectionViewFlowCell" forIndexPath:indexPath];
+////    cell.color = [_colors colorAtIndex:indexPath.item];
+////    return cell;
+//    VWW_LOG(@"");
+//    VWWColorCollectionViewCircleCell *cell = [_colorsCollectionView dequeueReusableCellWithReuseIdentifier:@"VWWColorCollectionViewCircleCell" forIndexPath:indexPath];
+//    NSMutableDictionary* dictionary = (_datasource)[indexPath.section];
+//    NSArray* array = dictionary[VWWColorsTableViewControllerColorKey];
+//    VWWColor* color = array[indexPath.item];
+//    cell.color = color;
+//    return cell;
+//
+//}
+//
+//
+//#pragma mark UICollectionViewDelegateFlowLayout
+////- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath{
+////    return CGSizeMake(160, 141);
+////}
+//
+//
+//#pragma mark UICollectionViewDelegate
+//
+//
+//
+//#pragma mark UIScrollViewDelegate
+//
+//- (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView {
+//    if (_hideStatusBars == NO) {
+//        [self hideBars];
+//    }
+//}
+//
+//- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView{
+//    if(_hideStatusBars){
+//        [self showBars];
+//    }
+//}
+//
+//#else
 
 #pragma mark UICollectionViewDataSource
 
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView{
-    VWW_LOG(@"returning %d", _datasource.count);
+//    if(_useCircleLayout){
+//        VWW_LOG(@"returning %d", _datasource.count);
+//        return _datasource.count;
+//        
+//    }
+//    VWW_LOG(@"returning %d", _datasource.count);
     return _datasource.count;
-
+    
 }
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{
     NSMutableDictionary* dictionary = _datasource[section];
     NSArray* array = dictionary[VWWColorsTableViewControllerColorKey];
     VWW_LOG(@"returning %d", array.count);
+
+    
+    if(_useCircleLayout){
+//        NSMutableDictionary* dictionary = _datasource[section];
+//        NSArray* array = dictionary[VWWColorsTableViewControllerColorKey];
+//        VWW_LOG(@"returning %d", array.count);
+
+        return MIN(1, array.count);
+    }
+    
+//    NSMutableDictionary* dictionary = _datasource[section];
+//    NSArray* array = dictionary[VWWColorsTableViewControllerColorKey];
+
     return array.count;
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
-    VWW_LOG(@"");
-    VWWColorCollectionViewFlowCell *cell = [_colorsCollectionView dequeueReusableCellWithReuseIdentifier:@"VWWColorCollectionViewFlowCell" forIndexPath:indexPath];
     NSMutableDictionary* dictionary = (_datasource)[indexPath.section];
     NSArray* array = dictionary[VWWColorsTableViewControllerColorKey];
     VWWColor* color = array[indexPath.item];
+    
+    if(_useCircleLayout){
+        VWWColorCollectionViewCircleCell *cell = [_colorsCollectionView dequeueReusableCellWithReuseIdentifier:@"VWWColorCollectionViewCircleCell" forIndexPath:indexPath];
+        cell.color = color;
+        return cell;
+    }
+
+    VWWColorCollectionViewFlowCell *cell = [_colorsCollectionView dequeueReusableCellWithReuseIdentifier:@"VWWColorCollectionViewFlowCell" forIndexPath:indexPath];
     cell.color = color;
     return cell;
 }
 
 - (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath{
-//    VWWColorCollectionReusableFlowView *cell = (VWWColorCollectionReusableFlowView*)[_colorsCollectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader
-//                                                                                         withReuseIdentifier:@"VWWColorCollectionReusableFlowView"
-//                                                                                                forIndexPath:indexPath];
+    if(_useCircleLayout){
+        return nil;
+    }
+    
     VWWColorCollectionReusableFlowView *cell = (VWWColorCollectionReusableFlowView*)[_colorsCollectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader
-                                                                                         withReuseIdentifier:@"VWWColorCollectionReusableFlowView"
-                                                                                                forIndexPath:indexPath];
+                                                                                                                              withReuseIdentifier:@"VWWColorCollectionReusableFlowView"
+                                                                                                                                     forIndexPath:indexPath];
     NSMutableDictionary* dictionary = (_datasource)[indexPath.section];
     NSArray* array = dictionary[VWWColorsTableViewControllerColorKey];
     VWWColor* color = array[indexPath.row];
@@ -176,18 +354,27 @@ static NSString *VWWColorsTableViewControllerColorKey = @"color";
 }
 
 #pragma mark UICollectionViewDelegateFlowLayout
-//- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath{
-//    return CGSizeMake(160, 141);
-//}
 
 
 #pragma mark UICollectionViewDelegate
-
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
+    self.transitionIndexPath = indexPath;
+    [self toggleLayout];
+    //    [collectionView startInteractiveTransitionToCollectionViewLayout:_circleLayout completion:^(BOOL completed, BOOL finish) {
+    //        [collectionView finishInteractiveTransition];    
+    //    }];
+    
+    
+}
 
 
 #pragma mark UIScollviewDelegate
 
-#endif
+//#endif
+
+
+
+
 
 
 @end

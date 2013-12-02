@@ -12,5 +12,5 @@
 @property (nonatomic) CGPoint center;
 @property (nonatomic) CGFloat radius;
 @property (nonatomic) NSInteger cellCount;
-
+@property (nonatomic) float offset;
 @end

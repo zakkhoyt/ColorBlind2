@@ -10,12 +10,15 @@
 
 #define ITEM_SIZE 17
 
+
+
+
 @implementation VWWColorCollectionViewCircleLayout
 
 
 - (id)init {
     if ((self = [super init])) {
-//        self.itemSize = CGSizeMake(17, 17);
+        self.offset = M_PI * 1.5;
     }
     return self;
 }
@@ -50,8 +53,10 @@
     UICollectionViewLayoutAttributes *attributes = [UICollectionViewLayoutAttributes layoutAttributesForCellWithIndexPath:indexPath];
     
     attributes.size = CGSizeMake(ITEM_SIZE, ITEM_SIZE);
-    attributes.center = CGPointMake(_center.x + _radius * cosf(2 * indexPath.section * M_PI / _cellCount),
-                                    _center.y + _radius * sinf(2 * indexPath.section * M_PI / _cellCount));
+    attributes.center = CGPointMake(
+                                    _center.x + _radius * cosf((2 * indexPath.section * M_PI / _cellCount) + self.offset),
+                                    _center.y + _radius * sinf((2 * indexPath.section * M_PI / _cellCount) + self.offset)
+                                    );
     
     return  attributes;
 

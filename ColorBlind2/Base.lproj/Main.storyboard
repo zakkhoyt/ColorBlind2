@@ -133,7 +133,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="160" height="141"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cEr-JU-3cS">
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cEr-JU-3cS">
                                                     <rect key="frame" x="10" y="10" width="140" height="21"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
@@ -181,11 +181,6 @@
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
-                                        <constraints>
-                                            <constraint firstItem="cEr-JU-3cS" firstAttribute="leading" secondItem="Tew-UL-NAZ" secondAttribute="leading" constant="10" id="ISJ-aR-fgr"/>
-                                            <constraint firstAttribute="trailing" secondItem="cEr-JU-3cS" secondAttribute="trailing" constant="10" id="QRY-eF-mAk"/>
-                                            <constraint firstItem="cEr-JU-3cS" firstAttribute="top" secondItem="Tew-UL-NAZ" secondAttribute="top" constant="10" id="cHI-bD-wr6"/>
-                                        </constraints>
                                         <connections>
                                             <outlet property="blueLabel" destination="isa-lE-hDG" id="SDC-jf-v8u"/>
                                             <outlet property="colorView" destination="lcn-KT-fzB" id="Jcw-HK-Ylb"/>
@@ -275,7 +270,13 @@
                             <constraint firstItem="bwf-8R-Nyz" firstAttribute="top" secondItem="n8y-fL-IPo" secondAttribute="top" id="ytq-IS-9df"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="3V3-d8-9a5"/>
+                    <navigationItem key="navigationItem" id="3V3-d8-9a5">
+                        <barButtonItem key="rightBarButtonItem" title="Toggle" id="OEY-m5-z9U">
+                            <connections>
+                                <action selector="toggleButtonAction:" destination="mm4-oK-YCv" id="hby-vR-P4g"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="colorsCollectionView" destination="bwf-8R-Nyz" id="MU2-U3-bTa"/>
                     </connections>
