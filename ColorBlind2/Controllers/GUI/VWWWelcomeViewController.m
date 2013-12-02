@@ -7,15 +7,45 @@
 //
 
 #import "VWWWelcomeViewController.h"
+#import "VWWAboutViewController.h"
+#import "VWWSpringTransition.h"
+#import "VWWShrinkTransition.h"
+#import "VWWHorizontalFlipTransition.h"
+#import "VWWInteractiveHorizontalSwipeTransition.h"
+#import "VWWExpandIntoFrameTransition.h"
 
-@interface VWWWelcomeViewController ()
+static NSString *VWWSegueWelcomeToAbout = @"VWWSegueWelcomeToAbout";
+
+@interface VWWWelcomeViewController ()<UIViewControllerTransitioningDelegate, UINavigationControllerDelegate>{
+    VWWSpringTransition *_bounceAnimationController;
+    VWWShrinkTransition *_shrinkDismissAnimationController;
+    VWWHorizontalFlipTransition *_flipAnimationController;
+    VWWInteractiveHorizontalSwipeTransition *_swipeInteractionController;
+    VWWExpandIntoFrameTransition *_expandTransition;
+}
 @property (weak, nonatomic) IBOutlet UIWebView *webView;
 @property (weak, nonatomic) IBOutlet UITextView *textView;
+@property (weak, nonatomic) IBOutlet UIImageView *logoImageView;
+@property (weak, nonatomic) IBOutlet UIButton *aboutButton;
 
 
 @end
 
 @implementation VWWWelcomeViewController
+
+#pragma mark UIViewController overrides
+
+- (id)initWithCoder:(NSCoder *)aDecoder {
+    if (self = [super initWithCoder:aDecoder]) {
+        _bounceAnimationController = [[VWWSpringTransition alloc]init];
+        _shrinkDismissAnimationController = [[VWWShrinkTransition alloc]init];
+        _flipAnimationController = [[VWWHorizontalFlipTransition alloc]init];
+        _swipeInteractionController = [[VWWInteractiveHorizontalSwipeTransition alloc]init];
+        _expandTransition = [[VWWExpandIntoFrameTransition alloc]init];
+    }
+    return self;
+}
+
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -29,11 +59,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	
-//    NSString *htmlString = [self htmlString];
-//    [self.webView loadHTMLString:htmlString baseURL:nil];
-    NSString *aboutString = [self textString];
-    self.textView.text = aboutString;
+    self.navigationController.delegate = self;
     
 }
 
@@ -43,21 +69,61 @@
     // Dispose of any resources that can be recreated.
 }
 
--(NSString*)htmlString{
-    
-    NSString* path = [[NSBundle mainBundle] pathForResource:@"about" ofType:@"html"];
-    NSError* error;
-    NSString* fileContents = [NSString stringWithContentsOfFile:path encoding:NSASCIIStringEncoding error:&error];
-    return fileContents;
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
+    if([segue.identifier isEqualToString:VWWSegueWelcomeToAbout]){
+        VWWAboutViewController *vc = segue.destinationViewController;
+        vc.transitioningDelegate = self;
+    }
 }
 
--(NSString*)textString{
-    
-    NSString* path = [[NSBundle mainBundle] pathForResource:@"about" ofType:@"txt"];
-    NSError* error;
-    NSString* fileContents = [NSString stringWithContentsOfFile:path encoding:NSASCIIStringEncoding error:&error];
-    return fileContents;
+
+#pragma mark Private methods
+
+
+
+#pragma mark IBActions
+- (IBAction)aboutButtonTouchUpInside:(id)sender {
+    [self performSegueWithIdentifier:VWWSegueWelcomeToAbout sender:self];
 }
+
+
+#pragma mark UIViewControllerTransitioningDelegate
+
+// Transition for presenting a modal view controller
+- (id<UIViewControllerAnimatedTransitioning>)animationControllerForPresentedController:(UIViewController *)presented
+                                                                   presentingController:(UIViewController *)presenting
+                                                                       sourceController: (UIViewController *)source{
+//    [_expandTransition setToFrame:self.logoImageView.frame];
+//    [_expandTransition setFromFrame:self.aboutButton.frame];
+    return _bounceAnimationController;
+}
+
+// Transition for dismissing a modal view controller
+- (id<UIViewControllerAnimatedTransitioning>)animationControllerForDismissedController:(UIViewController *)dismissed {
+    return _shrinkDismissAnimationController;
+}
+
+// Navigation controller flipper
+- (id<UIViewControllerAnimatedTransitioning>) navigationController:(UINavigationController *)navigationController
+                                   animationControllerForOperation:(UINavigationControllerOperation)operation
+                                                fromViewController:(UIViewController *)fromVC
+                                                  toViewController:(UIViewController *)toVC {
+    
+    if (operation == UINavigationControllerOperationPush) {
+        [_swipeInteractionController wireToViewController:toVC];
+    }
+    
+    
+    _flipAnimationController.reverse = (operation == UINavigationControllerOperationPop);
+    return _flipAnimationController;
+}
+
+// Method allows for interaction
+- (id <UIViewControllerInteractiveTransitioning>) navigationController:(UINavigationController *)navigationController
+                           interactionControllerForAnimationController:(id <UIViewControllerAnimatedTransitioning>)animationController {
+    return _swipeInteractionController.interactionInProgress ? _swipeInteractionController : nil;
+}
+
 
 
 @end

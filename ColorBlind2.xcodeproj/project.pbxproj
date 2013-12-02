@@ -37,6 +37,14 @@
 		C66ECD29184C41B7003691D6 /* VWWWelcomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C66ECD28184C41B7003691D6 /* VWWWelcomeViewController.m */; };
 		C66ECD2B184C421F003691D6 /* about.html in Resources */ = {isa = PBXBuildFile; fileRef = C66ECD2A184C421F003691D6 /* about.html */; };
 		C66ECD2D184C455F003691D6 /* about.txt in Resources */ = {isa = PBXBuildFile; fileRef = C66ECD2C184C455F003691D6 /* about.txt */; };
+		C66ECD31184C534F003691D6 /* VWWCaptureViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C66ECD30184C534F003691D6 /* VWWCaptureViewController.m */; };
+		C66ECD34184C5395003691D6 /* VWWCaptureFromPhotoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C66ECD33184C5395003691D6 /* VWWCaptureFromPhotoViewController.m */; };
+		C66ECD3D184C56DC003691D6 /* VWWSpringTransition.m in Sources */ = {isa = PBXBuildFile; fileRef = C66ECD37184C56DC003691D6 /* VWWSpringTransition.m */; };
+		C66ECD3E184C56DC003691D6 /* VWWShrinkTransition.m in Sources */ = {isa = PBXBuildFile; fileRef = C66ECD38184C56DC003691D6 /* VWWShrinkTransition.m */; };
+		C66ECD3F184C56DC003691D6 /* VWWInteractiveHorizontalSwipeTransition.m in Sources */ = {isa = PBXBuildFile; fileRef = C66ECD3A184C56DC003691D6 /* VWWInteractiveHorizontalSwipeTransition.m */; };
+		C66ECD42184C5736003691D6 /* VWWHorizontalFlipTransition.m in Sources */ = {isa = PBXBuildFile; fileRef = C66ECD40184C5736003691D6 /* VWWHorizontalFlipTransition.m */; };
+		C66ECD46184C58FD003691D6 /* VWWAboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C66ECD45184C58FD003691D6 /* VWWAboutViewController.m */; };
+		C66ECD49184C5DC4003691D6 /* VWWExpandIntoFrameTransition.m in Sources */ = {isa = PBXBuildFile; fileRef = C66ECD48184C5DC4003691D6 /* VWWExpandIntoFrameTransition.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -97,6 +105,22 @@
 		C66ECD28184C41B7003691D6 /* VWWWelcomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VWWWelcomeViewController.m; sourceTree = "<group>"; };
 		C66ECD2A184C421F003691D6 /* about.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = about.html; sourceTree = "<group>"; };
 		C66ECD2C184C455F003691D6 /* about.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = about.txt; sourceTree = "<group>"; };
+		C66ECD2F184C534F003691D6 /* VWWCaptureViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VWWCaptureViewController.h; sourceTree = "<group>"; };
+		C66ECD30184C534F003691D6 /* VWWCaptureViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VWWCaptureViewController.m; sourceTree = "<group>"; };
+		C66ECD32184C5395003691D6 /* VWWCaptureFromPhotoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VWWCaptureFromPhotoViewController.h; sourceTree = "<group>"; };
+		C66ECD33184C5395003691D6 /* VWWCaptureFromPhotoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VWWCaptureFromPhotoViewController.m; sourceTree = "<group>"; };
+		C66ECD37184C56DC003691D6 /* VWWSpringTransition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VWWSpringTransition.m; sourceTree = "<group>"; };
+		C66ECD38184C56DC003691D6 /* VWWShrinkTransition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VWWShrinkTransition.m; sourceTree = "<group>"; };
+		C66ECD39184C56DC003691D6 /* VWWInteractiveHorizontalSwipeTransition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VWWInteractiveHorizontalSwipeTransition.h; sourceTree = "<group>"; };
+		C66ECD3A184C56DC003691D6 /* VWWInteractiveHorizontalSwipeTransition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VWWInteractiveHorizontalSwipeTransition.m; sourceTree = "<group>"; };
+		C66ECD3B184C56DC003691D6 /* VWWShrinkTransition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VWWShrinkTransition.h; sourceTree = "<group>"; };
+		C66ECD3C184C56DC003691D6 /* VWWSpringTransition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VWWSpringTransition.h; sourceTree = "<group>"; };
+		C66ECD40184C5736003691D6 /* VWWHorizontalFlipTransition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VWWHorizontalFlipTransition.m; sourceTree = "<group>"; };
+		C66ECD41184C5736003691D6 /* VWWHorizontalFlipTransition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VWWHorizontalFlipTransition.h; sourceTree = "<group>"; };
+		C66ECD44184C58FD003691D6 /* VWWAboutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VWWAboutViewController.h; sourceTree = "<group>"; };
+		C66ECD45184C58FD003691D6 /* VWWAboutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VWWAboutViewController.m; sourceTree = "<group>"; };
+		C66ECD47184C5DC4003691D6 /* VWWExpandIntoFrameTransition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VWWExpandIntoFrameTransition.h; sourceTree = "<group>"; };
+		C66ECD48184C5DC4003691D6 /* VWWExpandIntoFrameTransition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VWWExpandIntoFrameTransition.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -161,7 +185,7 @@
 				C66E16C2184BDFA10008FAC1 /* Images.xcassets */,
 				C66E16E0184BDFB70008FAC1 /* Models */,
 				C66E16AE184BDFA10008FAC1 /* Supporting Files */,
-				C66E16E9184BE0610008FAC1 /* User Interface */,
+				C66ECD35184C56AB003691D6 /* User Interface */,
 				C66E16F6184BE2420008FAC1 /* Utility */,
 			);
 			path = ColorBlind2;
@@ -217,6 +241,8 @@
 		C66E16E7184BE04C0008FAC1 /* GUI */ = {
 			isa = PBXGroup;
 			children = (
+				C66ECD43184C58F3003691D6 /* About */,
+				C66ECD2E184C532B003691D6 /* Capture */,
 				C66ECD26184C41A5003691D6 /* Welcome */,
 				C66ECD10184C1DAA003691D6 /* Collection */,
 				C66E1705184C07150008FAC1 /* Table */,
@@ -235,14 +261,6 @@
 				C66E16EB184BE0990008FAC1 /* VWWFileReader.m */,
 			);
 			path = "Non-GUI";
-			sourceTree = "<group>";
-		};
-		C66E16E9184BE0610008FAC1 /* User Interface */ = {
-			isa = PBXGroup;
-			children = (
-				C66E16B9184BDFA10008FAC1 /* Main.storyboard */,
-			);
-			name = "User Interface";
 			sourceTree = "<group>";
 		};
 		C66E16F6184BE2420008FAC1 /* Utility */ = {
@@ -326,6 +344,52 @@
 				C66ECD28184C41B7003691D6 /* VWWWelcomeViewController.m */,
 			);
 			name = Welcome;
+			sourceTree = "<group>";
+		};
+		C66ECD2E184C532B003691D6 /* Capture */ = {
+			isa = PBXGroup;
+			children = (
+				C66ECD2F184C534F003691D6 /* VWWCaptureViewController.h */,
+				C66ECD30184C534F003691D6 /* VWWCaptureViewController.m */,
+				C66ECD32184C5395003691D6 /* VWWCaptureFromPhotoViewController.h */,
+				C66ECD33184C5395003691D6 /* VWWCaptureFromPhotoViewController.m */,
+			);
+			name = Capture;
+			sourceTree = "<group>";
+		};
+		C66ECD35184C56AB003691D6 /* User Interface */ = {
+			isa = PBXGroup;
+			children = (
+				C66ECD36184C56B8003691D6 /* Transitions */,
+				C66E16B9184BDFA10008FAC1 /* Main.storyboard */,
+			);
+			path = "User Interface";
+			sourceTree = "<group>";
+		};
+		C66ECD36184C56B8003691D6 /* Transitions */ = {
+			isa = PBXGroup;
+			children = (
+				C66ECD3C184C56DC003691D6 /* VWWSpringTransition.h */,
+				C66ECD37184C56DC003691D6 /* VWWSpringTransition.m */,
+				C66ECD41184C5736003691D6 /* VWWHorizontalFlipTransition.h */,
+				C66ECD40184C5736003691D6 /* VWWHorizontalFlipTransition.m */,
+				C66ECD3B184C56DC003691D6 /* VWWShrinkTransition.h */,
+				C66ECD38184C56DC003691D6 /* VWWShrinkTransition.m */,
+				C66ECD39184C56DC003691D6 /* VWWInteractiveHorizontalSwipeTransition.h */,
+				C66ECD3A184C56DC003691D6 /* VWWInteractiveHorizontalSwipeTransition.m */,
+				C66ECD47184C5DC4003691D6 /* VWWExpandIntoFrameTransition.h */,
+				C66ECD48184C5DC4003691D6 /* VWWExpandIntoFrameTransition.m */,
+			);
+			name = Transitions;
+			sourceTree = "<group>";
+		};
+		C66ECD43184C58F3003691D6 /* About */ = {
+			isa = PBXGroup;
+			children = (
+				C66ECD44184C58FD003691D6 /* VWWAboutViewController.h */,
+				C66ECD45184C58FD003691D6 /* VWWAboutViewController.m */,
+			);
+			name = About;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -437,14 +501,22 @@
 				C66ECD1C184C1E25003691D6 /* VWWColorCollectionViewFlowLayout.m in Sources */,
 				C66E16F2184BE0990008FAC1 /* VWWColors.m in Sources */,
 				C66E16F4184BE0990008FAC1 /* VWWColor.m in Sources */,
+				C66ECD46184C58FD003691D6 /* VWWAboutViewController.m in Sources */,
+				C66ECD3F184C56DC003691D6 /* VWWInteractiveHorizontalSwipeTransition.m in Sources */,
 				C66ECD13184C1DEA003691D6 /* VWWColorsCollectionViewController.m in Sources */,
+				C66ECD49184C5DC4003691D6 /* VWWExpandIntoFrameTransition.m in Sources */,
 				C66ECD29184C41B7003691D6 /* VWWWelcomeViewController.m in Sources */,
 				C66ECD25184C2AE6003691D6 /* VWWColorCollectionReusableFlowView.m in Sources */,
+				C66ECD3E184C56DC003691D6 /* VWWShrinkTransition.m in Sources */,
 				C66ECD22184C2820003691D6 /* VWWColorCollectionViewCircleCell.m in Sources */,
 				C66ECD19184C1E11003691D6 /* VWWColorCollectionViewFlowCell.m in Sources */,
+				C66ECD31184C534F003691D6 /* VWWCaptureViewController.m in Sources */,
 				C66E1709184C07380008FAC1 /* VWWColorTableViewCell.m in Sources */,
+				C66ECD3D184C56DC003691D6 /* VWWSpringTransition.m in Sources */,
 				C66E16FC184BE2B30008FAC1 /* VWWUtility.m in Sources */,
 				C66ECD1F184C228B003691D6 /* VWWColorCollectionViewCircleLayout.m in Sources */,
+				C66ECD34184C5395003691D6 /* VWWCaptureFromPhotoViewController.m in Sources */,
+				C66ECD42184C5736003691D6 /* VWWHorizontalFlipTransition.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -481,6 +553,7 @@
 				C66E16BA184BDFA10008FAC1 /* Base */,
 			);
 			name = Main.storyboard;
+			path = ..;
 			sourceTree = "<group>";
 		};
 		C66E16D2184BDFA10008FAC1 /* InfoPlist.strings */ = {
