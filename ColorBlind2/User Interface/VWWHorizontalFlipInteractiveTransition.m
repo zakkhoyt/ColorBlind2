@@ -42,6 +42,14 @@
     // 5. flip the to VC halfway round - hiding it
     toView.layer.transform = [self yRotation:factor * -M_PI_2];
     
+
+    // See TODO below in completion block
+//    if(CATransform3DEqualToTransform(toView.layer.transform, [self yRotation:0.0])){
+//        NSLog(@"YES!");
+//    }
+//    NSLog(@"to: %@", NSStringFromCATransform3D(toView.layer.transform));
+//    NSLog(@"to: %@", NSStringFromCGAffineTransform(toView.layer.transform));
+    
     // 6. Animate
     NSTimeInterval duration = [self transitionDuration:transitionContext];
     [UIView animateKeyframesWithDuration:duration
@@ -60,6 +68,8 @@
                                                               toView.layer.transform = [self yRotation:0.0];
                                                           }];
                               } completion:^(BOOL finished) {
+                                  // TODO; There is a bug here where on a slow swipe (with completion) that this block is never called
+                                  // Can probably fix this with a compare on the current rotation and the calculate target. If same, call completTransaction.
                                   [transitionContext completeTransition:![transitionContext transitionWasCancelled]];
                               }];
 }

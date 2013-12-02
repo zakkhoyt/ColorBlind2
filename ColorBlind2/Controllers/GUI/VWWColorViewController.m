@@ -14,6 +14,10 @@
 @property (weak, nonatomic) IBOutlet UIView *colorView;
 
 @property (weak, nonatomic) IBOutlet UILabel *nameLabel;
+@property (weak, nonatomic) IBOutlet UILabel *hexLabel;
+@property (weak, nonatomic) IBOutlet UILabel *redLabel;
+@property (weak, nonatomic) IBOutlet UILabel *greenLabel;
+@property (weak, nonatomic) IBOutlet UILabel *blueLabel;
 
 
 
@@ -41,6 +45,11 @@
     [super viewWillAppear:animated];
     _colorView.backgroundColor = _color.uiColor;
     _nameLabel.text = _color.name;
+    _redLabel.text = [NSString stringWithFormat:@"Red:%u", [_color hexFromFloat:_color.red]];
+    _greenLabel.text = [NSString stringWithFormat:@"Green:%u", [_color hexFromFloat:_color.green]];
+    _blueLabel.text = [NSString stringWithFormat:@"Blue:%u", [_color hexFromFloat:_color.blue]];
+    _hexLabel.text = [NSString stringWithFormat:@"%@", [_color hexValue]];
+
 }
 
 - (void)didReceiveMemoryWarning

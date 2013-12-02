@@ -8,7 +8,7 @@
 
 #import "VWWColorCollectionViewCircleLayout.h"
 
-#define ITEM_SIZE 17
+#define ITEM_SIZE 40
 
 
 
