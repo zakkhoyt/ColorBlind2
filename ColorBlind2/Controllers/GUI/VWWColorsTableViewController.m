@@ -10,15 +10,22 @@
 #import "VWWColors.h"
 #import "VWWColorTableViewCell.h"
 #import "VWWColor.h"
+#import "VWWColorViewController.h"
+#import "VWWHorizontalFlipInteractiveTransition.h"
+#import "VWWHorizontalFlipTransition.h"
 
 
 //#define VWW_HIDE_BARS_ON_SCROLL 1
 
 static NSString *VWWColorsTableViewControllerHeaderKey = @"headerTitle";
 static NSString *VWWColorsTableViewControllerColorKey = @"color";
+static NSString *VWWSegueTableToColor = @"VWWSegueTableToColor";
 
-@interface VWWColorsTableViewController () <UITableViewDataSource, UITableViewDelegate>{
+@interface VWWColorsTableViewController () <UIViewControllerTransitioningDelegate, UITableViewDataSource, UITableViewDelegate>{
     BOOL _hideStatusBars;
+    VWWHorizontalFlipInteractiveTransition *_interactiveHorizontalFlipTransition;
+    VWWHorizontalFlipTransition *_horizontalFlipTransition;
+
 }
 @property (nonatomic, strong) VWWColors *colors;
 @property (weak, nonatomic) IBOutlet UITableView *colorsTableView;
@@ -29,23 +36,27 @@ static NSString *VWWColorsTableViewControllerColorKey = @"color";
 @implementation VWWColorsTableViewController
 
 #pragma mark UIViewController overrides
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization
+- (id)initWithCoder:(NSCoder *)aDecoder {
+    if (self = [super initWithCoder:aDecoder]) {
+        _interactiveHorizontalFlipTransition = [[VWWHorizontalFlipInteractiveTransition alloc]init];
+        _horizontalFlipTransition = [[VWWHorizontalFlipTransition alloc]init];
     }
     return self;
 }
+
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     _colors = [VWWColors sharedInstance];
     [self createDataSource];
-
-
+    self.navigationController.delegate = self;
+    
+#if defined(VWW_HIDE_BARS_ON_SCROLL)
     [self addGestureRecognizers];
+#endif
+//    NSLog(@"delegate:%@ dataSource:%@", self.tableView.delegate, self.tableView.dataSource);
+
 }
 
 -(void)viewWillAppear:(BOOL)animated{
@@ -64,6 +75,13 @@ static NSString *VWWColorsTableViewControllerColorKey = @"color";
     return _hideStatusBars;
 }
 
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
+    if([segue.identifier isEqualToString:VWWSegueTableToColor]){
+        VWWColorViewController *vc = segue.destinationViewController;
+        vc.color = sender;
+//        vc.transitioningDelegate = self;
+    }
+}
 #pragma mark Private methods
 // We already have an NSOrderedSet of VWWColor objects sorted by color.name.
 // We need to convert that data in what the UITableView's scrubber can take advantage or
@@ -183,6 +201,12 @@ static NSString *VWWColorsTableViewControllerColorKey = @"color";
 
 
 
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    VWWColorTableViewCell *cell = (VWWColorTableViewCell*)[tableView cellForRowAtIndexPath:indexPath];
+    [self performSegueWithIdentifier:VWWSegueTableToColor sender:cell.color];
+}
+
+
 #pragma mark UIScrollViewDelegate
 
 - (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView {
@@ -198,7 +222,27 @@ static NSString *VWWColorsTableViewControllerColorKey = @"color";
 }
 
 
+#pragma mark UIViewControllerTransitioningDelegate
 
+// Navigation controller flipper
+- (id<UIViewControllerAnimatedTransitioning>) navigationController:(UINavigationController *)navigationController
+                                   animationControllerForOperation:(UINavigationControllerOperation)operation
+                                                fromViewController:(UIViewController *)fromVC
+                                                  toViewController:(UIViewController *)toVC {
+    
+    if (operation == UINavigationControllerOperationPush) {
+        [_horizontalFlipTransition wireToViewController:toVC];
+    }
+    
+    
+    _interactiveHorizontalFlipTransition.reverse = (operation == UINavigationControllerOperationPop);
+    return _interactiveHorizontalFlipTransition;
+}
 
+// Method allows for interaction
+- (id <UIViewControllerInteractiveTransitioning>) navigationController:(UINavigationController *)navigationController
+                           interactionControllerForAnimationController:(id <UIViewControllerAnimatedTransitioning>)animationController {
+    return _horizontalFlipTransition.interactionInProgress ? _horizontalFlipTransition : nil;
+}
 
 @end

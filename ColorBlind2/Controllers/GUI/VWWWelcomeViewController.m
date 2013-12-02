@@ -10,8 +10,8 @@
 #import "VWWAboutViewController.h"
 #import "VWWSpringTransition.h"
 #import "VWWShrinkTransition.h"
+#import "VWWHorizontalFlipInteractiveTransition.h"
 #import "VWWHorizontalFlipTransition.h"
-#import "VWWInteractiveHorizontalSwipeTransition.h"
 #import "VWWExpandIntoFrameTransition.h"
 
 static NSString *VWWSegueWelcomeToAbout = @"VWWSegueWelcomeToAbout";
@@ -19,8 +19,8 @@ static NSString *VWWSegueWelcomeToAbout = @"VWWSegueWelcomeToAbout";
 @interface VWWWelcomeViewController ()<UIViewControllerTransitioningDelegate, UINavigationControllerDelegate>{
     VWWSpringTransition *_bounceAnimationController;
     VWWShrinkTransition *_shrinkDismissAnimationController;
-    VWWHorizontalFlipTransition *_flipAnimationController;
-    VWWInteractiveHorizontalSwipeTransition *_swipeInteractionController;
+    VWWHorizontalFlipInteractiveTransition *_interactiveHorizontalFlipTransition;
+    VWWHorizontalFlipTransition *_horizontalFlipTransition;
     VWWExpandIntoFrameTransition *_expandTransition;
 }
 @property (weak, nonatomic) IBOutlet UIWebView *webView;
@@ -39,8 +39,8 @@ static NSString *VWWSegueWelcomeToAbout = @"VWWSegueWelcomeToAbout";
     if (self = [super initWithCoder:aDecoder]) {
         _bounceAnimationController = [[VWWSpringTransition alloc]init];
         _shrinkDismissAnimationController = [[VWWShrinkTransition alloc]init];
-        _flipAnimationController = [[VWWHorizontalFlipTransition alloc]init];
-        _swipeInteractionController = [[VWWInteractiveHorizontalSwipeTransition alloc]init];
+        _interactiveHorizontalFlipTransition = [[VWWHorizontalFlipInteractiveTransition alloc]init];
+        _horizontalFlipTransition = [[VWWHorizontalFlipTransition alloc]init];
         _expandTransition = [[VWWExpandIntoFrameTransition alloc]init];
     }
     return self;
@@ -110,18 +110,18 @@ static NSString *VWWSegueWelcomeToAbout = @"VWWSegueWelcomeToAbout";
                                                   toViewController:(UIViewController *)toVC {
     
     if (operation == UINavigationControllerOperationPush) {
-        [_swipeInteractionController wireToViewController:toVC];
+        [_horizontalFlipTransition wireToViewController:toVC];
     }
     
     
-    _flipAnimationController.reverse = (operation == UINavigationControllerOperationPop);
-    return _flipAnimationController;
+    _interactiveHorizontalFlipTransition.reverse = (operation == UINavigationControllerOperationPop);
+    return _interactiveHorizontalFlipTransition;
 }
 
 // Method allows for interaction
 - (id <UIViewControllerInteractiveTransitioning>) navigationController:(UINavigationController *)navigationController
                            interactionControllerForAnimationController:(id <UIViewControllerAnimatedTransitioning>)animationController {
-    return _swipeInteractionController.interactionInProgress ? _swipeInteractionController : nil;
+    return _horizontalFlipTransition.interactionInProgress ? _horizontalFlipTransition : nil;
 }
 
 

@@ -8,59 +8,58 @@
 
 #import "VWWHorizontalFlipTransition.h"
 
-@implementation VWWHorizontalFlipTransition
-
-- (NSTimeInterval)transitionDuration: (id<UIViewControllerContextTransitioning>)transitionContext {
-    return 1.0f;
+@implementation VWWHorizontalFlipTransition{
+    BOOL _shouldCompleteTransition; UINavigationController *_navigationController;
 }
 
-- (CATransform3D) yRotation:(CGFloat) angle {
-    return CATransform3DMakeRotation(angle, 0.0, 1.0, 0.0);
+- (void)wireToViewController:(UIViewController *)viewController {
+    _navigationController = viewController.navigationController;
+    [self prepareGestureRecognizerInView:viewController.view];
 }
 
-- (void)animateTransition: (id<UIViewControllerContextTransitioning>)transitionContext {
-    // 1. the usual stuff ...
-    UIView* containerView = [transitionContext containerView];
-    UIViewController *fromVC = [transitionContext viewControllerForKey: UITransitionContextFromViewControllerKey];
-    UIViewController *toVC = [transitionContext viewControllerForKey: UITransitionContextToViewControllerKey];
-    UIView *toView = toVC.view;
-    UIView *fromView = fromVC.view;
-    [containerView addSubview:toVC.view];
-    
-    
-    // 2. Add a perspective transform
-    CATransform3D transform = CATransform3DIdentity; transform.m34 = -0.002;
-    [containerView.layer setSublayerTransform:transform];
-    
-    // 3. Give both VCs the same start frame
-    CGRect initialFrame = [transitionContext initialFrameForViewController:fromVC];
-    fromView.frame = initialFrame; toView.frame = initialFrame;
-    
-    // 4. reverse?
-    float factor = self.reverse ? 1.0 : -1.0;
-    
-    // 5. flip the to VC halfway round - hiding it
-    toView.layer.transform = [self yRotation:factor * -M_PI_2];
-    
-    // 6. Animate
-    NSTimeInterval duration = [self transitionDuration:transitionContext];
-    [UIView animateKeyframesWithDuration:duration
-                                   delay:0.0
-                                 options:0
-                              animations:^{
-                                  [UIView addKeyframeWithRelativeStartTime:0.0
-                                                          relativeDuration:0.5
-                                                                animations:^{
-                                                                    // 7. rotate the from view
-                                                                    fromView.layer.transform = [self yRotation:factor * M_PI_2];
-                                                                }];
-                                  [UIView addKeyframeWithRelativeStartTime:0.5
-                                                          relativeDuration:0.5 animations:^{
-                                                              // 8. rotate the to view
-                                                              toView.layer.transform = [self yRotation:0.0];
-                                                          }];
-                              } completion:^(BOOL finished) {
-                                  [transitionContext completeTransition:![transitionContext transitionWasCancelled]];
-                              }];
+- (void)prepareGestureRecognizerInView:(UIView*)view {
+    UIPanGestureRecognizer *gesture = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(handleGesture:)];
+    [view addGestureRecognizer:gesture];
 }
+
+- (CGFloat)completionSpeed {
+    return 1 - self.percentComplete;
+}
+
+- (void)handleGesture:(UIPanGestureRecognizer*)gestureRecognizer {
+    CGPoint translation = [gestureRecognizer translationInView:gestureRecognizer.view.superview];
+    switch (gestureRecognizer.state) {
+        case UIGestureRecognizerStateBegan:
+            // 1. Start an interactive transition!
+            self.interactionInProgress = YES;
+            [_navigationController popViewControllerAnimated:YES];
+            break;
+        case UIGestureRecognizerStateChanged: {
+            // 2. compute the current position
+            CGFloat fraction = - (translation.x / 200.0);
+            fraction = fminf(fmaxf(fraction, 0.0), 1.0);
+            
+            // 3. should we complete?
+            _shouldCompleteTransition = (fraction > 0.5);
+            
+            // 4. update the animation
+            [self updateInteractiveTransition:fraction];
+            break;
+        }
+            
+        case UIGestureRecognizerStateEnded: case UIGestureRecognizerStateCancelled:
+            // 5. finish or cancel
+            self.interactionInProgress = NO;
+            if (!_shouldCompleteTransition || gestureRecognizer.state == UIGestureRecognizerStateCancelled) {
+                [self cancelInteractiveTransition];
+            }
+            else {
+                [self finishInteractiveTransition];
+            }
+            break;
+        default:
+            break;
+    }
+}
+
 @end

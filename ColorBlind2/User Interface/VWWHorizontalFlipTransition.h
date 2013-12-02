@@ -6,9 +6,8 @@
 //  Copyright (c) 2013 com.razeware. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
 
-@interface VWWHorizontalFlipTransition : NSObject<UIViewControllerAnimatedTransitioning>
-@property (nonatomic, assign) BOOL reverse;
-
+@interface VWWHorizontalFlipTransition : UIPercentDrivenInteractiveTransition
+- (void)wireToViewController:(UIViewController*)viewController; @property (nonatomic, assign) BOOL interactionInProgress;
 @end
