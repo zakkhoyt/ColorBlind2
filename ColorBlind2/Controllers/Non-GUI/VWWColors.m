@@ -12,7 +12,7 @@
 
 @interface VWWColors ()
 @property (nonatomic, strong, readwrite) NSMutableDictionary *colorsDictionary;
-@property (nonatomic, strong, readwrite) NSOrderedSet *colorsKeys;
+@property (nonatomic, strong, readwrite) NSMutableOrderedSet *colorsKeys;
 @property (nonatomic, readwrite) NSString *currentColorKey;
 @end
 
@@ -20,31 +20,38 @@
 
 #pragma mark - Public methods
 
++(VWWColors*)sharedInstance{
+    static dispatch_once_t once;
+    static id instance;
+    dispatch_once(&once, ^{
+        instance = self.new;
+    });
+    return instance;
+}
 
--(id)initWithPath:(NSString*)path{
-    self = [super init];
-    if(self){
-        _colorsDictionary = [[VWWFileReader colorsFromFile:path]mutableCopy];
-        if(self.colorsDictionary == nil || self.colorsDictionary.count == 0){
-            VWW_LOG_WARN(@"Failed to load any colors from %@", path);
-        } else {
-            // We have a dictionary, now let's generate and sort the keys
-            NSMutableArray *unsortedColorsKeys = [[NSMutableArray alloc]initWithCapacity:self.colorsDictionary.allValues.count];
-            for(VWWColor *color in self.colorsDictionary.allValues){
-                [unsortedColorsKeys addObject:color.name];
-            }
-            self.colorsKeys = [NSOrderedSet orderedSetWithArray:[self sortColors:unsortedColorsKeys]];
-            
-            // Set current key
-            if(self.colorsKeys.count){
-                self.currentColorKey = self.colorsKeys[0];
-            }
-        }
+
+-(BOOL)openColorsFileWithPath:(NSString*)path{
+    [self.colorsDictionary removeAllObjects];
+    [self.colorsKeys removeAllObjects];
+    
+    _colorsDictionary = [[VWWFileReader colorsFromFile:path]mutableCopy];
+    if(self.colorsDictionary == nil || self.colorsDictionary.count == 0){
+        VWW_LOG_WARN(@"Failed to load any colors from %@", path);
+        return NO;
     }
-    else{
-        NSLog(@"ERROR at %s:%d", __FUNCTION__, __LINE__);
+    
+    // We have a dictionary, now let's generate and sort the keys
+    NSMutableArray *unsortedColorsKeys = [[NSMutableArray alloc]initWithCapacity:self.colorsDictionary.allValues.count];
+    for(VWWColor *color in self.colorsDictionary.allValues){
+        [unsortedColorsKeys addObject:color.name];
     }
-    return self;
+    self.colorsKeys = [NSMutableOrderedSet orderedSetWithArray:[self sortColors:unsortedColorsKeys]];
+    
+    // Set current key
+    if(self.colorsKeys.count){
+        self.currentColorKey = self.colorsKeys[0];
+    }
+    return YES;
 }
 
 

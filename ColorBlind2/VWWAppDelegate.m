@@ -7,12 +7,17 @@
 //
 
 #import "VWWAppDelegate.h"
+#import "VWWColors.h"
 
 @implementation VWWAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    // Override point for customization after application launch.
+    VWWColors *colors = [VWWColors sharedInstance];
+    NSString* path = [[NSBundle mainBundle] pathForResource:@"colors_complex" ofType:@"csv"];
+    NSLog(@"Initializing colors object from file %@", path);
+    [colors openColorsFileWithPath:path];
+    
     return YES;
 }
 							

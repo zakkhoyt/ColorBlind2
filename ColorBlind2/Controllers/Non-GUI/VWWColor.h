@@ -15,7 +15,7 @@
 @property (nonatomic) float green;
 @property (nonatomic) float blue;
 @property (nonatomic, retain) NSNumber* hue;
-@property (nonatomic, retain) UIColor*  color;
+@property (nonatomic, retain) UIColor*  uiColor;
 
 
 -(id)initWithName:(NSString*)name 
@@ -26,6 +26,7 @@
               hue:(NSNumber*)hue;
 
 -(NSString*)description;
-
+-(NSString*)hexValue;
+-(NSUInteger)hexFromFloat:(float)f;
 
 @end

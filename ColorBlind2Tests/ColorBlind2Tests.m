@@ -38,7 +38,10 @@
 -(VWWColors*)colors{
     NSString* path = [[NSBundle mainBundle] pathForResource:@"colors_complex" ofType:@"csv"];
     NSLog(@"Creating colors object from file %@", path);
-    VWWColors *colors = [[VWWColors alloc]initWithPath:path];
+    VWWColors *colors = [VWWColors sharedInstance];
+    
+
+    XCTAssertTrue([colors openColorsFileWithPath:path], @"Failed to open colors file");
     XCTAssert(colors, @"Failed to created colors object");
     return colors;
 }

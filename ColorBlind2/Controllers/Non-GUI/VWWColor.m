@@ -32,7 +32,7 @@
         _green = green / (float)100;
         _blue = blue / (float)100;
         _hue = hue;
-        _color = [UIColor colorWithRed:_red green:_green blue:_blue alpha:1.0];
+        _uiColor = [UIColor colorWithRed:_red green:_green blue:_blue alpha:1.0];
     }
     return self;
 }
@@ -53,5 +53,16 @@
     
 }
 
+-(NSString*)hexValue{
+    NSString *redString = [NSString stringWithFormat:@"%02x", [self hexFromFloat:self.red]];
+    NSString *greenString = [NSString stringWithFormat:@"%02x", [self hexFromFloat:self.green]];
+    NSString *blueString = [NSString stringWithFormat:@"%02x", [self hexFromFloat:self.blue]];
+    NSString *hexString = [NSString stringWithFormat:@"0x%@%@%@", redString, greenString, blueString];
+    return [hexString uppercaseString];
+}
+
+-(NSUInteger)hexFromFloat:(float)f{
+    return f / 1.0 * 255;
+}
 
 @end

@@ -13,12 +13,14 @@
 @interface VWWColors : NSObject
 
 @property (nonatomic, strong, readonly) NSMutableDictionary *colorsDictionary;
-@property (nonatomic, strong, readonly) NSOrderedSet *colorsKeys;
+@property (nonatomic, strong, readonly) NSMutableOrderedSet *colorsKeys;
 
 // Represents the current color used by GUI. NSNotifications are broadcast when this changes
 @property (nonatomic, readonly) NSString *currentColorKey;
 
--(id)initWithPath:(NSString*)path;
++(VWWColors*)sharedInstance;
+
+-(BOOL)openColorsFileWithPath:(NSString*)path;
     
 // Logs all colors to the console
 -(void)printColors;

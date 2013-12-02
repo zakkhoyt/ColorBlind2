@@ -28,6 +28,8 @@
 		C66E16FC184BE2B30008FAC1 /* VWWUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = C66E16FB184BE2B30008FAC1 /* VWWUtility.m */; };
 		C66E1700184BE46E0008FAC1 /* colors_complex.csv in Resources */ = {isa = PBXBuildFile; fileRef = C66E16FE184BE46E0008FAC1 /* colors_complex.csv */; };
 		C66E1701184BE46E0008FAC1 /* colors_simple.csv in Resources */ = {isa = PBXBuildFile; fileRef = C66E16FF184BE46E0008FAC1 /* colors_simple.csv */; };
+		C66E1704184C06730008FAC1 /* VWWColorsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C66E1703184C06730008FAC1 /* VWWColorsTableViewController.m */; };
+		C66E1709184C07380008FAC1 /* VWWColorTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C66E1708184C07380008FAC1 /* VWWColorTableViewCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -72,6 +74,10 @@
 		C66E16FB184BE2B30008FAC1 /* VWWUtility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = VWWUtility.m; path = Utilities/VWWUtility.m; sourceTree = "<group>"; };
 		C66E16FE184BE46E0008FAC1 /* colors_complex.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = colors_complex.csv; sourceTree = "<group>"; };
 		C66E16FF184BE46E0008FAC1 /* colors_simple.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = colors_simple.csv; sourceTree = "<group>"; };
+		C66E1702184C06730008FAC1 /* VWWColorsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VWWColorsTableViewController.h; sourceTree = "<group>"; };
+		C66E1703184C06730008FAC1 /* VWWColorsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VWWColorsTableViewController.m; sourceTree = "<group>"; };
+		C66E1707184C07380008FAC1 /* VWWColorTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VWWColorTableViewCell.h; sourceTree = "<group>"; };
+		C66E1708184C07380008FAC1 /* VWWColorTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VWWColorTableViewCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -192,6 +198,7 @@
 		C66E16E7184BE04C0008FAC1 /* GUI */ = {
 			isa = PBXGroup;
 			children = (
+				C66E1705184C07150008FAC1 /* Table */,
 				C66E16BC184BDFA10008FAC1 /* VWWFirstViewController.h */,
 				C66E16BD184BDFA10008FAC1 /* VWWFirstViewController.m */,
 				C66E16BF184BDFA10008FAC1 /* VWWSecondViewController.h */,
@@ -237,6 +244,25 @@
 				C66E16FF184BE46E0008FAC1 /* colors_simple.csv */,
 			);
 			path = Documents;
+			sourceTree = "<group>";
+		};
+		C66E1705184C07150008FAC1 /* Table */ = {
+			isa = PBXGroup;
+			children = (
+				C66E1706184C071E0008FAC1 /* Cell */,
+				C66E1702184C06730008FAC1 /* VWWColorsTableViewController.h */,
+				C66E1703184C06730008FAC1 /* VWWColorsTableViewController.m */,
+			);
+			name = Table;
+			sourceTree = "<group>";
+		};
+		C66E1706184C071E0008FAC1 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				C66E1707184C07380008FAC1 /* VWWColorTableViewCell.h */,
+				C66E1708184C07380008FAC1 /* VWWColorTableViewCell.m */,
+			);
+			name = Cell;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -342,10 +368,12 @@
 				C66E16B4184BDFA10008FAC1 /* main.m in Sources */,
 				C66E16F3184BE0990008FAC1 /* VWWFileReader.m in Sources */,
 				C66E16B8184BDFA10008FAC1 /* VWWAppDelegate.m in Sources */,
+				C66E1704184C06730008FAC1 /* VWWColorsTableViewController.m in Sources */,
 				C66E16BE184BDFA10008FAC1 /* VWWFirstViewController.m in Sources */,
 				C66E16F2184BE0990008FAC1 /* VWWColors.m in Sources */,
 				C66E16C1184BDFA10008FAC1 /* VWWSecondViewController.m in Sources */,
 				C66E16F4184BE0990008FAC1 /* VWWColor.m in Sources */,
+				C66E1709184C07380008FAC1 /* VWWColorTableViewCell.m in Sources */,
 				C66E16FC184BE2B30008FAC1 /* VWWUtility.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
