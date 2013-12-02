@@ -1,5 +1,5 @@
 //
-//  VWWFirstViewController.h
+//  VWWColorCollectionViewFlowLayout.h
 //  ColorBlind2
 //
 //  Created by Zakk Hoyt on 12/1/13.
@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface VWWFirstViewController : UIViewController
+@interface VWWColorCollectionViewFlowLayout : UICollectionViewFlowLayout
 
 @end

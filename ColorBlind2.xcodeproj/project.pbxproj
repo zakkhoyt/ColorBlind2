@@ -14,8 +14,6 @@
 		C66E16B4184BDFA10008FAC1 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C66E16B3184BDFA10008FAC1 /* main.m */; };
 		C66E16B8184BDFA10008FAC1 /* VWWAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C66E16B7184BDFA10008FAC1 /* VWWAppDelegate.m */; };
 		C66E16BB184BDFA10008FAC1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C66E16B9184BDFA10008FAC1 /* Main.storyboard */; };
-		C66E16BE184BDFA10008FAC1 /* VWWFirstViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C66E16BD184BDFA10008FAC1 /* VWWFirstViewController.m */; };
-		C66E16C1184BDFA10008FAC1 /* VWWSecondViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C66E16C0184BDFA10008FAC1 /* VWWSecondViewController.m */; };
 		C66E16C3184BDFA10008FAC1 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C66E16C2184BDFA10008FAC1 /* Images.xcassets */; };
 		C66E16CA184BDFA10008FAC1 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C66E16C9184BDFA10008FAC1 /* XCTest.framework */; };
 		C66E16CB184BDFA10008FAC1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C66E16A7184BDFA10008FAC1 /* Foundation.framework */; };
@@ -30,6 +28,12 @@
 		C66E1701184BE46E0008FAC1 /* colors_simple.csv in Resources */ = {isa = PBXBuildFile; fileRef = C66E16FF184BE46E0008FAC1 /* colors_simple.csv */; };
 		C66E1704184C06730008FAC1 /* VWWColorsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C66E1703184C06730008FAC1 /* VWWColorsTableViewController.m */; };
 		C66E1709184C07380008FAC1 /* VWWColorTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C66E1708184C07380008FAC1 /* VWWColorTableViewCell.m */; };
+		C66ECD13184C1DEA003691D6 /* VWWColorsCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C66ECD12184C1DEA003691D6 /* VWWColorsCollectionViewController.m */; };
+		C66ECD19184C1E11003691D6 /* VWWColorCollectionViewFlowCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C66ECD18184C1E11003691D6 /* VWWColorCollectionViewFlowCell.m */; };
+		C66ECD1C184C1E25003691D6 /* VWWColorCollectionViewFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = C66ECD1B184C1E25003691D6 /* VWWColorCollectionViewFlowLayout.m */; };
+		C66ECD1F184C228B003691D6 /* VWWColorCollectionViewCircleLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = C66ECD1E184C228B003691D6 /* VWWColorCollectionViewCircleLayout.m */; };
+		C66ECD22184C2820003691D6 /* VWWColorCollectionViewCircleCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C66ECD21184C2820003691D6 /* VWWColorCollectionViewCircleCell.m */; };
+		C66ECD25184C2AE6003691D6 /* VWWColorCollectionReusableFlowView.m in Sources */ = {isa = PBXBuildFile; fileRef = C66ECD24184C2AE6003691D6 /* VWWColorCollectionReusableFlowView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -54,10 +58,6 @@
 		C66E16B6184BDFA10008FAC1 /* VWWAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VWWAppDelegate.h; sourceTree = "<group>"; };
 		C66E16B7184BDFA10008FAC1 /* VWWAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VWWAppDelegate.m; sourceTree = "<group>"; };
 		C66E16BA184BDFA10008FAC1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		C66E16BC184BDFA10008FAC1 /* VWWFirstViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = VWWFirstViewController.h; path = ../../VWWFirstViewController.h; sourceTree = "<group>"; };
-		C66E16BD184BDFA10008FAC1 /* VWWFirstViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = VWWFirstViewController.m; path = ../../VWWFirstViewController.m; sourceTree = "<group>"; };
-		C66E16BF184BDFA10008FAC1 /* VWWSecondViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = VWWSecondViewController.h; path = ../../VWWSecondViewController.h; sourceTree = "<group>"; };
-		C66E16C0184BDFA10008FAC1 /* VWWSecondViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = VWWSecondViewController.m; path = ../../VWWSecondViewController.m; sourceTree = "<group>"; };
 		C66E16C2184BDFA10008FAC1 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		C66E16C8184BDFA10008FAC1 /* ColorBlind2Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ColorBlind2Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C66E16C9184BDFA10008FAC1 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
@@ -78,6 +78,18 @@
 		C66E1703184C06730008FAC1 /* VWWColorsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VWWColorsTableViewController.m; sourceTree = "<group>"; };
 		C66E1707184C07380008FAC1 /* VWWColorTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VWWColorTableViewCell.h; sourceTree = "<group>"; };
 		C66E1708184C07380008FAC1 /* VWWColorTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VWWColorTableViewCell.m; sourceTree = "<group>"; };
+		C66ECD11184C1DEA003691D6 /* VWWColorsCollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VWWColorsCollectionViewController.h; sourceTree = "<group>"; };
+		C66ECD12184C1DEA003691D6 /* VWWColorsCollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VWWColorsCollectionViewController.m; sourceTree = "<group>"; };
+		C66ECD17184C1E11003691D6 /* VWWColorCollectionViewFlowCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VWWColorCollectionViewFlowCell.h; sourceTree = "<group>"; };
+		C66ECD18184C1E11003691D6 /* VWWColorCollectionViewFlowCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VWWColorCollectionViewFlowCell.m; sourceTree = "<group>"; };
+		C66ECD1A184C1E25003691D6 /* VWWColorCollectionViewFlowLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VWWColorCollectionViewFlowLayout.h; sourceTree = "<group>"; };
+		C66ECD1B184C1E25003691D6 /* VWWColorCollectionViewFlowLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VWWColorCollectionViewFlowLayout.m; sourceTree = "<group>"; };
+		C66ECD1D184C228B003691D6 /* VWWColorCollectionViewCircleLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VWWColorCollectionViewCircleLayout.h; sourceTree = "<group>"; };
+		C66ECD1E184C228B003691D6 /* VWWColorCollectionViewCircleLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VWWColorCollectionViewCircleLayout.m; sourceTree = "<group>"; };
+		C66ECD20184C2820003691D6 /* VWWColorCollectionViewCircleCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VWWColorCollectionViewCircleCell.h; sourceTree = "<group>"; };
+		C66ECD21184C2820003691D6 /* VWWColorCollectionViewCircleCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VWWColorCollectionViewCircleCell.m; sourceTree = "<group>"; };
+		C66ECD23184C2AE6003691D6 /* VWWColorCollectionReusableFlowView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VWWColorCollectionReusableFlowView.h; sourceTree = "<group>"; };
+		C66ECD24184C2AE6003691D6 /* VWWColorCollectionReusableFlowView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VWWColorCollectionReusableFlowView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -198,11 +210,8 @@
 		C66E16E7184BE04C0008FAC1 /* GUI */ = {
 			isa = PBXGroup;
 			children = (
+				C66ECD10184C1DAA003691D6 /* Collection */,
 				C66E1705184C07150008FAC1 /* Table */,
-				C66E16BC184BDFA10008FAC1 /* VWWFirstViewController.h */,
-				C66E16BD184BDFA10008FAC1 /* VWWFirstViewController.m */,
-				C66E16BF184BDFA10008FAC1 /* VWWSecondViewController.h */,
-				C66E16C0184BDFA10008FAC1 /* VWWSecondViewController.m */,
 			);
 			path = GUI;
 			sourceTree = "<group>";
@@ -263,6 +272,41 @@
 				C66E1708184C07380008FAC1 /* VWWColorTableViewCell.m */,
 			);
 			name = Cell;
+			sourceTree = "<group>";
+		};
+		C66ECD10184C1DAA003691D6 /* Collection */ = {
+			isa = PBXGroup;
+			children = (
+				C66ECD15184C1DF6003691D6 /* Flow */,
+				C66ECD14184C1DF1003691D6 /* Cell */,
+				C66ECD11184C1DEA003691D6 /* VWWColorsCollectionViewController.h */,
+				C66ECD12184C1DEA003691D6 /* VWWColorsCollectionViewController.m */,
+			);
+			name = Collection;
+			sourceTree = "<group>";
+		};
+		C66ECD14184C1DF1003691D6 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				C66ECD17184C1E11003691D6 /* VWWColorCollectionViewFlowCell.h */,
+				C66ECD18184C1E11003691D6 /* VWWColorCollectionViewFlowCell.m */,
+				C66ECD20184C2820003691D6 /* VWWColorCollectionViewCircleCell.h */,
+				C66ECD21184C2820003691D6 /* VWWColorCollectionViewCircleCell.m */,
+				C66ECD23184C2AE6003691D6 /* VWWColorCollectionReusableFlowView.h */,
+				C66ECD24184C2AE6003691D6 /* VWWColorCollectionReusableFlowView.m */,
+			);
+			name = Cell;
+			sourceTree = "<group>";
+		};
+		C66ECD15184C1DF6003691D6 /* Flow */ = {
+			isa = PBXGroup;
+			children = (
+				C66ECD1A184C1E25003691D6 /* VWWColorCollectionViewFlowLayout.h */,
+				C66ECD1B184C1E25003691D6 /* VWWColorCollectionViewFlowLayout.m */,
+				C66ECD1D184C228B003691D6 /* VWWColorCollectionViewCircleLayout.h */,
+				C66ECD1E184C228B003691D6 /* VWWColorCollectionViewCircleLayout.m */,
+			);
+			name = Flow;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -369,12 +413,16 @@
 				C66E16F3184BE0990008FAC1 /* VWWFileReader.m in Sources */,
 				C66E16B8184BDFA10008FAC1 /* VWWAppDelegate.m in Sources */,
 				C66E1704184C06730008FAC1 /* VWWColorsTableViewController.m in Sources */,
-				C66E16BE184BDFA10008FAC1 /* VWWFirstViewController.m in Sources */,
+				C66ECD1C184C1E25003691D6 /* VWWColorCollectionViewFlowLayout.m in Sources */,
 				C66E16F2184BE0990008FAC1 /* VWWColors.m in Sources */,
-				C66E16C1184BDFA10008FAC1 /* VWWSecondViewController.m in Sources */,
 				C66E16F4184BE0990008FAC1 /* VWWColor.m in Sources */,
+				C66ECD13184C1DEA003691D6 /* VWWColorsCollectionViewController.m in Sources */,
+				C66ECD25184C2AE6003691D6 /* VWWColorCollectionReusableFlowView.m in Sources */,
+				C66ECD22184C2820003691D6 /* VWWColorCollectionViewCircleCell.m in Sources */,
+				C66ECD19184C1E11003691D6 /* VWWColorCollectionViewFlowCell.m in Sources */,
 				C66E1709184C07380008FAC1 /* VWWColorTableViewCell.m in Sources */,
 				C66E16FC184BE2B30008FAC1 /* VWWUtility.m in Sources */,
+				C66ECD1F184C228B003691D6 /* VWWColorCollectionViewCircleLayout.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -583,6 +631,7 @@
 				C66E16DB184BDFA10008FAC1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		C66E16DC184BDFA10008FAC1 /* Build configuration list for PBXNativeTarget "ColorBlind2Tests" */ = {
 			isa = XCConfigurationList;
@@ -591,6 +640,7 @@
 				C66E16DE184BDFA10008FAC1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
