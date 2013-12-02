@@ -15,8 +15,6 @@
 #pragma mark Custom methods
 
 +(NSDictionary*)colorsFromFile:(NSString*)path{
-    //const NSUInteger kArraySize = 1024;
-    
     const NSUInteger kNameIndex = 0;
     const NSUInteger kHexIndex = 1;
     const NSUInteger kRedIndex = 2;
@@ -27,14 +25,10 @@
 
     
     NSError* error;
-    
     NSString* fileContents = [NSString stringWithContentsOfFile:path encoding:NSASCIIStringEncoding error:&error];
-    
     NSArray* lines = [fileContents componentsSeparatedByString:@"\n"];
-
     NSMutableDictionary* colors = [[NSMutableDictionary alloc]initWithCapacity:lines.count];
-    
-    
+
     VWW_LOG_TODO(@"add support for alpha and other color properties")
     
     // Each line in the file will look like this:

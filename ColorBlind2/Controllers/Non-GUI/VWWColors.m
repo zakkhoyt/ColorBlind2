@@ -12,7 +12,7 @@
 
 @interface VWWColors ()
 @property (nonatomic, strong, readwrite) NSMutableDictionary *colorsDictionary;
-@property (nonatomic, strong, readwrite) NSArray *colorsKeys;
+@property (nonatomic, strong, readwrite) NSOrderedSet *colorsKeys;
 @property (nonatomic, readwrite) NSString *currentColorKey;
 @end
 
@@ -33,7 +33,7 @@
             for(VWWColor *color in self.colorsDictionary.allValues){
                 [unsortedColorsKeys addObject:color.name];
             }
-            self.colorsKeys = [self sortColors:unsortedColorsKeys];
+            self.colorsKeys = [NSOrderedSet orderedSetWithArray:[self sortColors:unsortedColorsKeys]];
             
             // Set current key
             if(self.colorsKeys.count){
@@ -80,11 +80,33 @@
     }
 }
 
-
--(VWWColor*)colorFromRed:(float)red green:(float)green blue:(float)blue{
-
-    VWW_LOG_TODO(@"Implement");
-    return nil;
+-(VWWColor*)closestColorFromRed:(float)red green:(float)green blue:(float)blue{
+    if(!self.colorsDictionary){
+        VWW_LOG_WARN(@"No colors are loaded")
+        return nil;
+    }
+    
+    
+    NSUInteger closestIndex = 0;
+    float smallestDifference = 4.0; // 1.0 + 1.0 + 1.0 + 1.0 is the largest possible difference (RGBA)
+    
+    
+    for(NSUInteger index = 0; index < self.colorsKeys.count; index++){
+        NSString *key = self.colorsKeys[index];
+        VWWColor* color = self.colorsDictionary[key];
+        float diffRed = fabs(color.red - red);
+        float diffGreen = fabs(color.green - green);
+        float diffBlue = fabs(color.blue - blue);
+        if(diffRed + diffGreen + diffBlue < smallestDifference){
+            smallestDifference = diffRed + diffGreen + diffBlue;
+            closestIndex = index;
+        } else {
+//            int i = 0;
+        }
+    }
+    
+    NSString *key = self.colorsKeys[closestIndex];
+    return self.colorsDictionary[key];
 }
 
 
@@ -98,126 +120,61 @@
 
 
 -(VWWColor*)randomColor{
-//    if(!self.colorsSet){
-//        VWW_LOG_WARN(@"No colors are loaded.");
-//        return nil;
-//    }
-//    
-//    int r = arc4random() % self.colorsSet.count;
-//    return self.colorsSet[r];
-    VWW_LOG_TODO(@"Implement");
-    return nil;
-    
+    if(!self.colorsDictionary){
+        VWW_LOG_WARN(@"No colors are loaded")
+        return nil;
+    }
+
+    const NSUInteger kMax = 100000;
+    float r = (arc4random() % kMax) / (float)kMax;
+    float g = (arc4random() % kMax) / (float)kMax;
+    float b = (arc4random() % kMax) / (float)kMax;
+//    float a = (arc4random() % kMax) / (float)kMax;
+    return [self closestColorFromRed:r green:g blue:b];
 }
 
 
 
 // Loop through our array of VWWColor objects and do a case insensitive compare on the name property
 // Also dispatch a Notification Center event
--(BOOL)setCurrentColor:(VWWColor*)newColor{
-//    if(!self.colors){
-//        NSLog(@"ERROR at %s:%d", __FUNCTION__, __LINE__);
-//        return NO;
-//    }
-//
-//    for(NSUInteger index = 0; index < self.colors.count; index++){
-//        VWWColor* color = (self.colors)[index];
-//        if([color.name caseInsensitiveCompare:newColor.name] == NSOrderedSame){
-//            _currentColor = color;
-//
-//            // Stuff color into an NSDictionary and sent it along with the notification. 
-//            NSDictionary *userInfo = @{@"currentColor": _currentColor};
-////            [[NSNotificationCenter defaultCenter] postNotificationName:[NSString stringWithFormat:@"%s", NC_CURRENT_COLOR_CHANGED] object:self userInfo:userInfo];
-//            return YES;
-//        }
-//    }
-//    
-//    // we never found color in our list of colors. Return NO;
-//    return NO;
+-(BOOL)setCurrentColor:(VWWColor*)color{
+    if(!self.colorsDictionary){
+        VWW_LOG_WARN(@"No colors are loaded")
+        return NO;
+    }
+
+    if([self.colorsKeys containsObject:color.name] == NO){
+        VWW_LOG_WARN(@"Could not find color %@ in set of keys", color.name);
+        return NO;
+    }
     
-    VWW_LOG_TODO(@"Implement");
-    return NO;
+    self.currentColorKey = color.name;
+    return YES;
+
 }
 
 // Loop through our array of VWWColor objects and compare normalized RGB properties
 // Also dispatch a Notification Center event
--(BOOL)setCurrentColorFromUIColor:(UIColor*)newColor{
-//    if(!self.colors){
-//        NSLog(@"ERROR at %s:%d", __FUNCTION__, __LINE__);
-//        return NO;
-//    }
-//    
-//    for(NSUInteger index = 0; index < self.colors.count; index++){
-//        VWWColor* color = (self.colors)[index];
-//
-//        CGFloat red = 0.0f;
-//        CGFloat green = 0.0f;
-//        CGFloat blue = 0.0f;
-//        CGFloat alpha = 0.0f;
-//        
-//        if(![newColor getRed:&red green:&green blue:&blue alpha:&alpha]){
-//            // Error occured getting rgba. Fail silently
-//            continue;
-//        }
-//
-//// TODO: BUG: color "Asparagus" fails to function here
-////        NSLog(@"%d=%d\t%d=%d\t%d=%d",
-////              (NSUInteger)(red*100), color.red.integerValue,
-////              (NSUInteger)(green*100), color.green.integerValue,
-////              (NSUInteger)(blue*100), color.blue.integerValue);
-//        
-//        // local vars are 0.0 - 1.0
-//        // color.(vars) are 0 - 100.
-//        // Normalize and compare. Disregard alpha
-//        if((NSUInteger)(red*100) == color.red.integerValue &&
-//           (NSUInteger)(green*100) == color.green.integerValue &&
-//           (NSUInteger)(blue*100) == color.blue.integerValue){
-//
-////            [_currentColor release];
-//            _currentColor = color;
-////            [_currentColor retain];
-//            
-//            // Stuff color into an NSDictionary and sent it along with the NSNotification.
-//            NSDictionary *userInfo = @{@"currentColor": _currentColor};
-////            [[NSNotificationCenter defaultCenter] postNotificationName:[NSString stringWithFormat:@"%s", NC_CURRENT_COLOR_CHANGED] object:self userInfo:userInfo];
-//            return YES;
-//        }
-//    }
-//    
-//    // we never found color in our list of colors. Return NO;
-//    return NO;
+-(BOOL)setCurrentColorFromUIColor:(UIColor*)color{
+    if(!self.colorsDictionary){
+        VWW_LOG_WARN(@"No colors are loaded")
+        return NO;
+    }
+
+    float r = 0, g = 0, b = 0, a = 0;
+    [color getRed:&r green:&g blue:&b alpha:&a];
+    VWWColor *currentColor = [self closestColorFromRed:r green:g blue:b];
+    if(currentColor == nil){
+        VWW_LOG_WARN(@"Could not find a match for color");
+        return NO;
+    }
     
-    VWW_LOG_TODO(@"Implement");
-    return  NO;
+    self.currentColorKey = currentColor.name;
+    return YES;
 }
 
 #pragma mark - Private methods
 
--(VWWColor*)closestColorFromRed:(float)red green:(float)green blue:(float)blue{
-//    if(!self.colorsDictionary){
-//        VWW_LOG_WARN(@"No colors are loaded")
-//        return nil;
-//    }
-//
-//    
-//    NSUInteger closestIndex = 0;
-//    NSUInteger smallestDifference = 4.0; // 1.0 + 1.0 + 1.0 + 1.0 is the largest possible difference (RGBA)
-//
-////    for(NSUInteger index = 0; index < self.colors.count; index++){
-//    for(NSString *key in self.colorsKeys){
-//        VWWColor* color = self.colorsDictionary[key];
-//        float diffRed = fabs(color.red - red);
-//        float diffGreen = fabs(color.green - green);
-//        float diffBlue = fabs(color.blue - blue);
-//        if(diffRed + diffGreen + diffBlue < smallestDifference){
-//            smallestDifference = diffRed + diffGreen + diffBlue;
-//            closestIndex = index;
-//        }
-//    }
-//    
-//    return (VWWColor*)(self.colors)[closestIndex];
-    return  nil;
-}
 
 
 -(NSArray*)sortColors:(NSArray*)buddies{
