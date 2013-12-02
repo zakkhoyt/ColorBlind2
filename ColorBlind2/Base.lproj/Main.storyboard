@@ -17,12 +17,12 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="280" translatesAutoresizingMaskIntoConstraints="NO" id="vje-Uh-xAZ">
-                                <rect key="frame" x="20" y="74" width="280" height="121"/>
+                                <rect key="frame" x="20" y="74" width="280" height="393"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="121" id="aHJ-Fs-jRn"/>
+                                    <constraint firstAttribute="height" constant="393" id="aHJ-Fs-jRn"/>
                                 </constraints>
-                                <string key="text">This will demonstrate use of a UITableView (UITableViewDatasource &amp; UITableViewDelegate) along with insets, transparency, etc...</string>
+                                <string key="text">This will demonstrate use of a UITableView (UITableViewDatasource &amp; UITableViewDelegate) along with insets, transparency, and a scrubber to quickly sift through the data. Custom UITableViewCells are used in prototype configuration. When a cell is selected, a custom transition is performed to show the color in a larger display format. The transition back to the table is interactive and can be triggered by performing a horizontal swipe from right to left (or pressing back).</string>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
@@ -67,12 +67,12 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="280" translatesAutoresizingMaskIntoConstraints="NO" id="cyc-nV-rf0">
-                                <rect key="frame" x="20" y="74" width="280" height="162"/>
+                                <rect key="frame" x="20" y="74" width="280" height="392"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="162" id="rv7-Uj-Ipx"/>
+                                    <constraint firstAttribute="height" constant="392" id="rv7-Uj-Ipx"/>
                                 </constraints>
-                                <string key="text">This will demonstrate use of a UICollectionView (UICollectionViewDatasource, UICollectionViewDelegate, UICollectionViewFlowLayout, and UICollectionViewLayout) along with insets, transparency, etc...</string>
+                                <string key="text">This will demonstrate use of a UICollectionView (UICollectionViewDatasource, UICollectionViewDelegate, UICollectionViewFlowLayout, and UICollectionViewLayout (radial) along with insets, and transparency. The two layout classes act similar to the side scrubber on a UITableView, allowing the user to quickly sift through the colors by title. </string>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
@@ -446,7 +446,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="24"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ckG-oH-gzA">
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ckG-oH-gzA">
                                 <rect key="frame" x="254" y="76" width="42" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="About">
@@ -456,35 +456,21 @@
                                     <action selector="aboutButtonTouchUpInside:" destination="QyU-VU-8h7" eventType="touchUpInside" id="oy8-ze-48h"/>
                                 </connections>
                             </button>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="first" translatesAutoresizingMaskIntoConstraints="NO" id="3LA-72-5Lb">
-                                <rect key="frame" x="20" y="114" width="276" height="396"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="396" id="TIe-Wd-CUV"/>
-                                </constraints>
-                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="3LA-72-5Lb" firstAttribute="top" secondItem="ckG-oH-gzA" secondAttribute="bottom" constant="8" symbolic="YES" id="1RU-8z-ObE"/>
-                            <constraint firstAttribute="trailing" secondItem="3LA-72-5Lb" secondAttribute="trailing" constant="24" id="Bcg-UQ-NIg"/>
                             <constraint firstItem="4Rz-mS-Pr7" firstAttribute="leading" secondItem="ZPs-BY-vPr" secondAttribute="leading" id="BpT-12-mpe"/>
                             <constraint firstItem="qRN-nK-oJq" firstAttribute="top" secondItem="ZPs-BY-vPr" secondAttribute="bottom" constant="20" id="C7V-3m-fxm"/>
                             <constraint firstItem="ZPs-BY-vPr" firstAttribute="leading" secondItem="BU8-sD-kxf" secondAttribute="leading" constant="20" symbolic="YES" id="IRo-XR-2q4"/>
-                            <constraint firstItem="3LA-72-5Lb" firstAttribute="trailing" secondItem="ckG-oH-gzA" secondAttribute="trailing" id="MyW-Ul-su0"/>
                             <constraint firstItem="4Rz-mS-Pr7" firstAttribute="trailing" secondItem="ZPs-BY-vPr" secondAttribute="trailing" id="OOl-NI-ZjC"/>
-                            <constraint firstItem="3LA-72-5Lb" firstAttribute="leading" secondItem="ZPs-BY-vPr" secondAttribute="leading" id="RJf-vX-5kl"/>
                             <constraint firstItem="4Rz-mS-Pr7" firstAttribute="top" secondItem="BU8-sD-kxf" secondAttribute="top" constant="20" symbolic="YES" id="SUf-lW-3jO"/>
                             <constraint firstAttribute="trailing" secondItem="ZPs-BY-vPr" secondAttribute="trailing" constant="20" symbolic="YES" id="faX-Gp-acw"/>
-                            <constraint firstItem="ZPs-BY-vPr" firstAttribute="top" secondItem="3LA-72-5Lb" secondAttribute="bottom" constant="8" symbolic="YES" id="mil-PD-PmD"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="Pwm-Dv-CRc"/>
                     <nil key="simulatedTopBarMetrics"/>
                     <connections>
                         <outlet property="aboutButton" destination="ckG-oH-gzA" id="J9R-M4-2td"/>
-                        <outlet property="logoImageView" destination="3LA-72-5Lb" id="cdk-kT-gqM"/>
                         <outlet property="textView" destination="091-T1-kYP" id="5lo-Fk-F1i"/>
                         <segue destination="wTh-MQ-6g2" kind="modal" identifier="VWWSegueWelcomeToAbout" id="Pol-Cy-FeD"/>
                     </connections>
