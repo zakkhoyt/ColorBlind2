@@ -58,6 +58,53 @@
     // Dispose of any resources that can be recreated.
 }
 
+
+-(void)shareColor{
+//    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+//    [hud configureSmileAppearance];
+//    hud.labelText = @"Caching image";
+    
+//    void (^shareImage)(UIImage *image) = ^(UIImage *image){
+    NSString *colorString = [NSString stringWithFormat:@"ColorBlind on iOS\n%@", _color.prettyDescription];
+    NSMutableArray *items = items = [@[colorString]mutableCopy];
+    NSMutableArray *activities = [@[]mutableCopy];
+    UIActivityViewController *activityViewController = [[UIActivityViewController alloc]initWithActivityItems:items
+                                                                                        applicationActivities:activities];
+    
+    activityViewController.completionHandler = ^(NSString *activityType, BOOL completed){
+        if(completed){
+            [self dismissViewControllerAnimated:YES completion:^{
+//                [SMMixPanel logMixpanelActivityType:activityType asset:self.asset];
+            }];
+        }
+    };
+    
+    [self presentViewController:activityViewController animated:YES completion:nil];
+//    };
+    
+//    [[SDWebImageManager sharedManager] downloadWithURL:self.asset.largeImageURL
+//                                               options:SDWebImageRetryFailed
+//                                              progress:^(NSUInteger receivedSize, long long expectedSize) {
+//                                              } completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, BOOL finished) {
+//                                                  [MBProgressHUD hideHUDForView:self.view animated:YES];
+//                                                  if(image && finished){
+//                                                      shareImage(image);
+//                                                  }
+//                                                  else if(error){
+//                                                      // TODO handle error;
+//                                                  }
+//                                              }];
+}
+
+
+#pragma mark IBActions
+
+- (IBAction)shareBarButtonAction:(id)sender {
+    [self shareColor];
+}
+
+
+
 #pragma mark Public methods
 //-(void)setColor:(VWWColor *)color{
 //    _color = color;

@@ -8,7 +8,7 @@
 
 #import "VWWColorCollectionViewCircleLayout.h"
 
-#define ITEM_SIZE 40
+#define ITEM_SIZE 32
 
 
 
@@ -34,10 +34,16 @@
     _cellCount = [[self collectionView] numberOfSections];
     _center = CGPointMake(size.width / 2.0, size.height / 2.0);
     _radius = MIN(size.width, size.height) / 2.5;
+//    self.collectionView.showsHorizontalScrollIndicator = NO;
+//    self.collectionView.showsVerticalScrollIndicator = NO;
+//    
+//    // Center in view
+//    CGFloat y = (self.collectionView.superview.bounds.size.height - self.collectionView.contentSize.height)  / 2.0;
+//    self.collectionView.contentOffset = CGPointMake(0, y);
 }
 
 -(CGSize) collectionViewContentSize{
-    return [self collectionView].frame.size;
+    return self.collectionView.bounds.size;
 }
 
 
@@ -78,6 +84,7 @@
     return attributes;
 
 }
+
 
 ////-(UICollectionViewLayoutAttributes *)initialLayoutAttributesForInsertedItemAtIndexPath:(NSIndexPath *)indexPath{
 //-(UICollectionViewLayoutAttributes *)initialLayoutAttributesForAppearingItemAtIndexPath:(NSIndexPath *)indexPath{

@@ -21,7 +21,7 @@ static NSString *VWWColorsTableViewControllerHeaderKey = @"headerTitle";
 static NSString *VWWColorsTableViewControllerColorKey = @"color";
 static NSString *VWWSegueTableToColor = @"VWWSegueTableToColor";
 
-@interface VWWColorsTableViewController () <UIViewControllerTransitioningDelegate, UITableViewDataSource, UITableViewDelegate>{
+@interface VWWColorsTableViewController () <UIViewControllerTransitioningDelegate, UITableViewDataSource, UITableViewDelegate, UINavigationControllerDelegate>{
     BOOL _hideStatusBars;
     VWWHorizontalFlipInteractiveTransition *_interactiveHorizontalFlipTransition;
     VWWHorizontalFlipTransition *_horizontalFlipTransition;

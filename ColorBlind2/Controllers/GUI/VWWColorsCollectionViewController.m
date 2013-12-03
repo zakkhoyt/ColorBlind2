@@ -14,13 +14,18 @@
 #import "VWWColorCollectionViewFlowLayout.h"
 #import "VWWColorCollectionViewCircleLayout.h"
 #import "VWWColorCollectionReusableFlowView.h"
+#import "VWWColorViewController.h"
 
 //#define VWW_HIDE_BARS_ON_SCROLL 1
 
 static NSString *VWWColorsTableViewControllerHeaderKey = @"headerTitle";
 static NSString *VWWColorsTableViewControllerColorKey = @"color";
+static NSString *VWWSegueCollectionToColor = @"VWWSegueCollectionToColor";
 
-@interface VWWColorsCollectionViewController () <UICollectionViewDataSource, UICollectionViewDelegate>{
+@interface VWWColorsCollectionViewController ()
+<UICollectionViewDataSource,
+UICollectionViewDelegate,
+VWWColorCollectionReusableFlowViewDelegate>{
     BOOL _hideStatusBars;
     BOOL _useCircleLayout;
 }
@@ -56,6 +61,7 @@ static NSString *VWWColorsTableViewControllerColorKey = @"color";
     
     if(_useCircleLayout){
         _colorsCollectionView.collectionViewLayout = _circleLayout;
+
     } else {
         _colorsCollectionView.collectionViewLayout = _flowLayout;
     }
@@ -69,6 +75,13 @@ static NSString *VWWColorsTableViewControllerColorKey = @"color";
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
+    if([segue.identifier isEqualToString:VWWSegueCollectionToColor]){
+        VWWColorViewController *vc = segue.destinationViewController;
+        vc.color = sender;
+    }
 }
 
 - (BOOL)prefersStatusBarHidden
@@ -206,6 +219,9 @@ static NSString *VWWColorsTableViewControllerColorKey = @"color";
                 NSArray *indexPaths = [_colorsCollectionView indexPathsForVisibleItems];
                 [_colorsCollectionView reloadItemsAtIndexPaths:indexPaths];
                 
+//                // Center in view
+//                CGFloat y = (self.view.bounds.size.height - _colorsCollectionView.contentSize.height)  / 2.0;
+//                _colorsCollectionView.contentOffset = CGPointMake(0, y);
             }];
         }];
     }
@@ -271,6 +287,7 @@ static NSString *VWWColorsTableViewControllerColorKey = @"color";
     NSArray* array = dictionary[VWWColorsTableViewControllerColorKey];
     VWWColor* color = array[indexPath.row];
     cell.title = [color.name substringToIndex:1];
+    cell.delegate = self;
     return cell;
     
     
@@ -281,9 +298,17 @@ static NSString *VWWColorsTableViewControllerColorKey = @"color";
 
 #pragma mark UICollectionViewDelegate
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
-    self.transitionIndexPath = indexPath;
-    VWW_LOG(@"Setting self.transitionIndexPath: %ld:%ld", (long)self.transitionIndexPath.section, (long)self.transitionIndexPath.item);
-    [self toggleLayout];
+    // If we are in circle mode, toggle the layout.
+    if(_colorsCollectionView.collectionViewLayout == _circleLayout){
+        self.transitionIndexPath = indexPath;
+        VWW_LOG(@"Setting self.transitionIndexPath: %ld:%ld", (long)self.transitionIndexPath.section, (long)self.transitionIndexPath.item);
+        [self toggleLayout];
+    } else {
+        // Show color detail
+        VWWColorCollectionViewFlowCell *cell = (VWWColorCollectionViewFlowCell*)[_colorsCollectionView cellForItemAtIndexPath:indexPath];
+        VWWColor *color = cell.color;
+        [self performSegueWithIdentifier:VWWSegueCollectionToColor sender:color];
+    }
     
 
     // TODO: Future:
@@ -299,6 +324,10 @@ static NSString *VWWColorsTableViewControllerColorKey = @"color";
 
 //#endif
 
+#pragma mark VWWColorCollectionReusableFlowViewDelegate
+-(void)colorCollectionReusableFlowViewButtonTouchUpInside:(VWWColorCollectionReusableFlowView*)sender{
+    [self toggleLayout];
+}
 
 
 

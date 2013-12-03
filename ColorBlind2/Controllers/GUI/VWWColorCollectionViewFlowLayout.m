@@ -19,4 +19,12 @@
     }
     return self;
 }
+
+-(void)prepareLayout{
+    [super prepareLayout];
+    
+//    self.collectionView.showsHorizontalScrollIndicator = YES;
+//    self.collectionView.showsVerticalScrollIndicator = YES;
+    
+}
 @end

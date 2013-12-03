@@ -8,6 +8,12 @@
 
 #import <UIKit/UIKit.h>
 
+@class VWWColorCollectionReusableFlowView;
+
+@protocol VWWColorCollectionReusableFlowViewDelegate <NSObject>
+-(void)colorCollectionReusableFlowViewButtonTouchUpInside:(VWWColorCollectionReusableFlowView*)sender;
+@end
 @interface VWWColorCollectionReusableFlowView : UICollectionReusableView
+@property (nonatomic, weak) id <VWWColorCollectionReusableFlowViewDelegate> delegate;
 @property (nonatomic, strong) NSString *title;
 @end

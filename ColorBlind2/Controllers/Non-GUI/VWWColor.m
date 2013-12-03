@@ -53,6 +53,21 @@
     
 }
 
+-(NSString*)prettyDescription{
+    NSString* colorDescription = [NSString stringWithFormat:@"Name:%@\n"
+                                  "Hex:#%@\n"
+                                  "Red:%.4f\n"
+                                  "Green:%.4f\n"
+                                  "Blue:%.4f",
+                                  self.name,
+                                  self.hex,
+                                  self.red,
+                                  self.green,
+                                  self.blue];
+    return  colorDescription;
+    
+}
+
 -(NSString*)hexValue{
     NSString *redString = [NSString stringWithFormat:@"%02x", [self hexFromFloat:self.red]];
     NSString *greenString = [NSString stringWithFormat:@"%02x", [self hexFromFloat:self.green]];

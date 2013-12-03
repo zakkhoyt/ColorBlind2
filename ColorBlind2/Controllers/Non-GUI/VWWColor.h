@@ -26,6 +26,7 @@
               hue:(NSNumber*)hue;
 
 -(NSString*)description;
+-(NSString*)prettyDescription;
 -(NSString*)hexValue;
 -(NSUInteger)hexFromFloat:(float)f;
 

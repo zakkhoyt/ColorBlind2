@@ -10,6 +10,7 @@
 
 @interface VWWColorCollectionReusableFlowView ()
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
+@property (weak, nonatomic) IBOutlet UIButton *button;
 
 @end
 
@@ -32,6 +33,9 @@
     // Drawing code
 }
 */
+- (IBAction)buttonTouchUpInside:(id)sender {
+    [self.delegate colorCollectionReusableFlowViewButtonTouchUpInside:self];
+}
 
 
 -(void)setTitle:(NSString *)title{
