@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		C610CAE918541CBF002A3820 /* VWWFloatingColorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C610CAE818541CBF002A3820 /* VWWFloatingColorViewController.m */; };
+		C610CAED18543A05002A3820 /* VWWMixerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C610CAEC18543A05002A3820 /* VWWMixerViewController.m */; };
 		C6311209184C68E200BE02BA /* VWWColorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C6311208184C68E200BE02BA /* VWWColorViewController.m */; };
 		C631120E184C697900BE02BA /* VWWColorView.m in Sources */ = {isa = PBXBuildFile; fileRef = C631120D184C697900BE02BA /* VWWColorView.m */; };
 		C6311211184C698700BE02BA /* VWWCrosshairView.m in Sources */ = {isa = PBXBuildFile; fileRef = C6311210184C698700BE02BA /* VWWCrosshairView.m */; };
@@ -65,6 +66,8 @@
 /* Begin PBXFileReference section */
 		C610CAE718541CBE002A3820 /* VWWFloatingColorViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VWWFloatingColorViewController.h; sourceTree = "<group>"; };
 		C610CAE818541CBF002A3820 /* VWWFloatingColorViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VWWFloatingColorViewController.m; sourceTree = "<group>"; };
+		C610CAEB18543A05002A3820 /* VWWMixerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VWWMixerViewController.h; sourceTree = "<group>"; };
+		C610CAEC18543A05002A3820 /* VWWMixerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VWWMixerViewController.m; sourceTree = "<group>"; };
 		C6311207184C68E200BE02BA /* VWWColorViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VWWColorViewController.h; sourceTree = "<group>"; };
 		C6311208184C68E200BE02BA /* VWWColorViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VWWColorViewController.m; sourceTree = "<group>"; };
 		C631120C184C697900BE02BA /* VWWColorView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VWWColorView.h; sourceTree = "<group>"; };
@@ -162,6 +165,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		C610CAEA185439EB002A3820 /* Mixer */ = {
+			isa = PBXGroup;
+			children = (
+				C610CAEB18543A05002A3820 /* VWWMixerViewController.h */,
+				C610CAEC18543A05002A3820 /* VWWMixerViewController.m */,
+			);
+			name = Mixer;
+			sourceTree = "<group>";
+		};
 		C631120A184C68E500BE02BA /* Color */ = {
 			isa = PBXGroup;
 			children = (
@@ -281,6 +293,7 @@
 				C66ECD2E184C532B003691D6 /* Capture */,
 				C66ECD10184C1DAA003691D6 /* Collection */,
 				C631120A184C68E500BE02BA /* Color */,
+				C610CAEA185439EB002A3820 /* Mixer */,
 				C66E1705184C07150008FAC1 /* Table */,
 				C66ECD26184C41A5003691D6 /* Welcome */,
 			);
@@ -553,6 +566,7 @@
 				C66ECD3E184C56DC003691D6 /* VWWShrinkTransition.m in Sources */,
 				C6CFBABB184D9AA6002735AD /* VWWCaptureFromVideoViewController.m in Sources */,
 				C66ECD22184C2820003691D6 /* VWWColorCollectionViewCircleCell.m in Sources */,
+				C610CAED18543A05002A3820 /* VWWMixerViewController.m in Sources */,
 				C66ECD19184C1E11003691D6 /* VWWColorCollectionViewFlowCell.m in Sources */,
 				C66ECD31184C534F003691D6 /* VWWCaptureViewController.m in Sources */,
 				C66E1709184C07380008FAC1 /* VWWColorTableViewCell.m in Sources */,
