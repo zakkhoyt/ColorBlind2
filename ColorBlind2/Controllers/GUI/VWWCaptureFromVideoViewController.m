@@ -8,10 +8,25 @@
 
 #import "VWWCaptureFromVideoViewController.h"
 #import <AVFoundation/AVFoundation.h>
+#import "VWWColors.h"
+#import "VWWColor.h"
 
 @interface VWWCaptureFromVideoViewController () <AVCaptureVideoDataOutputSampleBufferDelegate>
 @property dispatch_queue_t avqueue;
 @property (weak, nonatomic) IBOutlet UIView *cameraView;
+@property (weak, nonatomic) IBOutlet UIView *colorContainerView;
+
+
+@property (weak, nonatomic) IBOutlet UILabel *nameLabel;
+@property (weak, nonatomic) IBOutlet UIView *colorView;
+@property (weak, nonatomic) IBOutlet UILabel *hexLabel;
+@property (weak, nonatomic) IBOutlet UILabel *redLabel;
+@property (weak, nonatomic) IBOutlet UILabel *greenLabel;
+@property (weak, nonatomic) IBOutlet UILabel *blueLabel;
+
+
+
+
 @end
 
 @implementation VWWCaptureFromVideoViewController
@@ -29,7 +44,8 @@
 {
     [super viewDidLoad];
     self.avqueue = dispatch_queue_create("com.vaporwarewolf.colorblind", NULL);
-    
+    self.colorContainerView.hidden = YES;
+    self.colorContainerView.alpha = 0.0;
 }
 
 
@@ -52,11 +68,31 @@
         dispatch_async(self.avqueue, ^{
             [self startCamera];
         });
+        [self showColorView];
     }
 
 }
 
 #pragma mark Private methods
+
+-(void)updateColor:(VWWColor*)color{
+    _colorView.backgroundColor = color.uiColor;
+    _nameLabel.text = color.name;
+    _redLabel.text = [NSString stringWithFormat:@"Red:%ld", (long)[color hexFromFloat:color.red]];
+    _greenLabel.text = [NSString stringWithFormat:@"Green:%ld", (long)[color hexFromFloat:color.green]];
+    _blueLabel.text = [NSString stringWithFormat:@"Blue:%ld", (long)[color hexFromFloat:color.blue]];
+    _hexLabel.text = [NSString stringWithFormat:@"%@", [color hexValue]];
+}
+
+-(void)showColorView{
+    self.colorContainerView.hidden = NO;
+    self.colorContainerView.backgroundColor = self.view.backgroundColor;
+    [UIView animateWithDuration:0.3 animations:^{
+        self.colorContainerView.alpha = 1.0;
+    }];
+}
+
+
 -(BOOL)isCameraAvailable{
     NSArray *videoDevices = [AVCaptureDevice devicesWithMediaType:AVMediaTypeVideo];
     BOOL cameraFound = NO;
@@ -307,6 +343,9 @@ didOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer
     //    NSLog(@"r=%f g=%f b=%f a=%f", red, green, blue, alpha);
     
     
+    
+    VWWColor *color = [[VWWColors sharedInstance]closestColorFromRed:red green:green blue:blue];
+    
 //    VWW_Color* color = [self.colors colorFromRed:[NSNumber numberWithInt:red*100]
 //                                           Green:[NSNumber numberWithInt:green*100]
 //                                            Blue:[NSNumber numberWithInt:blue*100]];
@@ -321,6 +360,7 @@ didOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer
     
     
     dispatch_sync(dispatch_get_main_queue(), ^{
+        [self updateColor:color];
 //        self.lblColorName.text = color.name;
 //        self.lblColorDetails.text = color.description;
 //        self.currentColorView.backgroundColor = color.color;

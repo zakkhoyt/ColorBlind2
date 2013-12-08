@@ -20,11 +20,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ColorBlind2/Controllers/GUI/VWWCaptureFromVideoViewController.m"
-            timestampString = "408164272.548795"
+            timestampString = "408167927.043367"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "279"
-            endingLineNumber = "279"
+            startingLineNumber = "315"
+            endingLineNumber = "315"
             landmarkName = "-captureOutput:didOutputSampleBuffer:fromConnection:"
             landmarkType = "5">
          </BreakpointContent>
@@ -42,6 +42,22 @@
             startingLineNumber = "87"
             endingLineNumber = "87"
             landmarkName = "-addCaptureFromPhotoController:offset:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ColorBlind2/Controllers/GUI/VWWCaptureFromPhotoViewController.m"
+            timestampString = "408167170.673606"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "58"
+            endingLineNumber = "58"
+            landmarkName = "-addFloatingColorViewController"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

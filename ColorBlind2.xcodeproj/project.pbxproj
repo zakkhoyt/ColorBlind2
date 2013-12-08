@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C610CAE918541CBF002A3820 /* VWWFloatingColorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C610CAE818541CBF002A3820 /* VWWFloatingColorViewController.m */; };
 		C6311209184C68E200BE02BA /* VWWColorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C6311208184C68E200BE02BA /* VWWColorViewController.m */; };
 		C631120E184C697900BE02BA /* VWWColorView.m in Sources */ = {isa = PBXBuildFile; fileRef = C631120D184C697900BE02BA /* VWWColorView.m */; };
 		C6311211184C698700BE02BA /* VWWCrosshairView.m in Sources */ = {isa = PBXBuildFile; fileRef = C6311210184C698700BE02BA /* VWWCrosshairView.m */; };
@@ -62,6 +63,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		C610CAE718541CBE002A3820 /* VWWFloatingColorViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VWWFloatingColorViewController.h; sourceTree = "<group>"; };
+		C610CAE818541CBF002A3820 /* VWWFloatingColorViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VWWFloatingColorViewController.m; sourceTree = "<group>"; };
 		C6311207184C68E200BE02BA /* VWWColorViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VWWColorViewController.h; sourceTree = "<group>"; };
 		C6311208184C68E200BE02BA /* VWWColorViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VWWColorViewController.m; sourceTree = "<group>"; };
 		C631120C184C697900BE02BA /* VWWColorView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VWWColorView.h; sourceTree = "<group>"; };
@@ -389,6 +392,8 @@
 				C66ECD33184C5395003691D6 /* VWWCaptureFromPhotoViewController.m */,
 				C6CFBAB9184D9AA6002735AD /* VWWCaptureFromVideoViewController.h */,
 				C6CFBABA184D9AA6002735AD /* VWWCaptureFromVideoViewController.m */,
+				C610CAE718541CBE002A3820 /* VWWFloatingColorViewController.h */,
+				C610CAE818541CBF002A3820 /* VWWFloatingColorViewController.m */,
 			);
 			name = Capture;
 			sourceTree = "<group>";
@@ -552,6 +557,7 @@
 				C66ECD31184C534F003691D6 /* VWWCaptureViewController.m in Sources */,
 				C66E1709184C07380008FAC1 /* VWWColorTableViewCell.m in Sources */,
 				C66ECD3D184C56DC003691D6 /* VWWSpringTransition.m in Sources */,
+				C610CAE918541CBF002A3820 /* VWWFloatingColorViewController.m in Sources */,
 				C66E16FC184BE2B30008FAC1 /* VWWUtility.m in Sources */,
 				C66ECD1F184C228B003691D6 /* VWWColorCollectionViewCircleLayout.m in Sources */,
 				C6311209184C68E200BE02BA /* VWWColorViewController.m in Sources */,

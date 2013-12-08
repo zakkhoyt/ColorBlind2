@@ -176,6 +176,16 @@
         [self attemptTopDock:view];
     }
 }
+
+
+- (void)collisionBehavior:(UICollisionBehavior*)behavior
+      endedContactForItem:(id <UIDynamicItem>)item
+   withBoundaryIdentifier:(id <NSCopying>)identifier{
+    
+}
+
+
+
 -(void)attemptTopDock:(UIView*)view{
     BOOL nearTopOfView = view.frame.origin.y < 100.0;
     if (nearTopOfView) {
@@ -190,7 +200,7 @@
                 self.navigationController.navigationBar.alpha = 0.0;
                 self.tabBarController.tabBar.alpha = 0.0;
                 [self.view bringSubviewToFront:view];
-//                self.view.alpha = 0.0;
+                self.view.backgroundColor = view.backgroundColor;
             }];
         }
     } else {
@@ -200,18 +210,19 @@
             _viewDocked = NO;
             
             _hideStatusBars = NO;
+
             [UIView animateWithDuration:0.3 animations:^{
                 [self setNeedsStatusBarAppearanceUpdate];
                 self.navigationController.navigationBar.alpha = 1.0;
                 self.tabBarController.tabBar.alpha = 1.0;
+                self.view.backgroundColor = [UIColor whiteColor];
+
                 if(view == self.photosViewController.view){
                     
                 }
                 else if(view == self.videoViewController.view) {
                     [self.view sendSubviewToBack:view];
                 }
-//                [self.view sendSubviewToBack:view];
-//                self.view.alpha = 1.0;
             }];
         }
     }
