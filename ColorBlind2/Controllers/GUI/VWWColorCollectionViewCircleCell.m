@@ -39,7 +39,8 @@
 
 -(void)setColor:(VWWColor *)color{
     _color = color;
-    _colorView.backgroundColor = self.color.uiColor;
+//    _colorView.backgroundColor = self.color.uiColor;
+    _colorView.backgroundColor = [UIColor clearColor];
     _nameLabel.text = [self.color.name substringToIndex:1];
 //    _redLabel.text = [NSString stringWithFormat:@"Red:%u", [_color hexFromFloat:_color.red]];
 //    _greenLabel.text = [NSString stringWithFormat:@"Green:%u", [_color hexFromFloat:_color.green]];

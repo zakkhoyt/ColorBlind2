@@ -19,9 +19,12 @@
     UISnapBehavior* _snap;
     BOOL _viewDocked;
     BOOL _hideStatusBars;
+    
 }
 @property (weak, nonatomic) IBOutlet UIButton *existingButton;
 @property (weak, nonatomic) IBOutlet UITextView *textView;
+@property (nonatomic, strong) VWWCaptureFromVideoViewController* videoViewController;
+@property (nonatomic, strong) VWWCaptureFromPhotoViewController* photosViewController;
 @end
 
 @implementation VWWCaptureViewController
@@ -68,15 +71,14 @@
 #pragma mark Private methods
 
 -(void)addCaptureViewControllers{
-    VWWCaptureFromVideoViewController* videoViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"VWWCaptureFromVideoViewController"];
-    [self addCaptureFromPhotoController:videoViewController offset:130];
+    self.videoViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"VWWCaptureFromVideoViewController"];
+    [self addCaptureFromPhotoController:self.videoViewController offset:130];
 
     
-    VWWCaptureFromPhotoViewController* photosViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"VWWCaptureFromPhotoViewController"];
-    [self addCaptureFromPhotoController:photosViewController offset:90];
-    
-
+    self.photosViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"VWWCaptureFromPhotoViewController"];
+    [self addCaptureFromPhotoController:self.photosViewController offset:90];
 }
+
 - (UIView*)addCaptureFromPhotoController:(UIViewController*)viewController offset:(CGFloat)offset{
     
     CGRect frameForView = CGRectOffset(self.view.bounds, 0.0, self.view.bounds.size.height - offset);
@@ -187,6 +189,7 @@
                 [self setNeedsStatusBarAppearanceUpdate];
                 self.navigationController.navigationBar.alpha = 0.0;
                 self.tabBarController.tabBar.alpha = 0.0;
+                [self.view bringSubviewToFront:view];
 //                self.view.alpha = 0.0;
             }];
         }
@@ -201,6 +204,13 @@
                 [self setNeedsStatusBarAppearanceUpdate];
                 self.navigationController.navigationBar.alpha = 1.0;
                 self.tabBarController.tabBar.alpha = 1.0;
+                if(view == self.photosViewController.view){
+                    
+                }
+                else if(view == self.videoViewController.view) {
+                    [self.view sendSubviewToBack:view];
+                }
+//                [self.view sendSubviewToBack:view];
 //                self.view.alpha = 1.0;
             }];
         }

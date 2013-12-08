@@ -8,7 +8,8 @@
 
 #import "VWWCaptureFromPhotoViewController.h"
 
-@interface VWWCaptureFromPhotoViewController ()
+@interface VWWCaptureFromPhotoViewController () <UIImagePickerControllerDelegate, UINavigationControllerDelegate, UIScrollViewDelegate>
+@property (weak, nonatomic) IBOutlet UIImageView *imageView;
 
 @end
 
@@ -34,5 +35,32 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+- (IBAction)choosePhotoButtonTouchUpInside:(id)sender {
+    UIImagePickerController *picker = [[UIImagePickerController alloc]init];
+    picker.delegate = self;
+    picker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+    [self presentViewController:picker animated:YES completion:^{
+        
+    }];
+}
+
+
+
+#pragma mark UIImagePickerControllerDelegate
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info{
+    UIImage *image = info[@"UIImagePickerControllerOriginalImage"];
+    self.imageView.image = image;
+    self.navigationController.navigationBar.hidden = YES;
+    [self dismissViewControllerAnimated:YES completion:^{
+        
+    }];
+
+}
+
+
+- (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker{
+    
+}
+
 
 @end
