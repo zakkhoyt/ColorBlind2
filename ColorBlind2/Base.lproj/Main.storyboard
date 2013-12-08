@@ -4,10 +4,10 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3747"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Table Info View Controller-->
         <scene sceneID="hY9-Bg-J9l">
             <objects>
-                <viewController id="zJ4-xL-juk" sceneMemberID="viewController">
+                <viewController id="zJ4-xL-juk" customClass="VWWTableInfoViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="yke-Km-Lsb"/>
                         <viewControllerLayoutGuide type="bottom" id="ZMg-26-jFM"/>
@@ -51,10 +51,10 @@
             </objects>
             <point key="canvasLocation" x="1800" y="-1100"/>
         </scene>
-        <!--View Controller-->
+        <!--Collection Info View Controller-->
         <scene sceneID="1Im-5J-tUe">
             <objects>
-                <viewController id="EOn-Yl-8pY" sceneMemberID="viewController">
+                <viewController id="EOn-Yl-8pY" customClass="VWWCollectionInfoViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="r2p-M6-6Rl"/>
                         <viewControllerLayoutGuide type="bottom" id="ckm-8S-kvd"/>
@@ -314,10 +314,10 @@
             </objects>
             <point key="canvasLocation" x="2879" y="339"/>
         </scene>
-        <!--View Controller-->
+        <!--Mixer Info View Controller-->
         <scene sceneID="DLv-je-PXd">
             <objects>
-                <viewController id="sPf-uq-fzd" sceneMemberID="viewController">
+                <viewController id="sPf-uq-fzd" customClass="VWWMixerInfoViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="T7j-ca-0rC"/>
                         <viewControllerLayoutGuide type="bottom" id="1st-Bi-eMh"/>
@@ -907,7 +907,7 @@
         <scene sceneID="Nxx-h6-Pnh">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="6KM-Zo-492" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Table" image="first" id="u1e-5L-l1D"/>
+                    <tabBarItem key="tabBarItem" title="Table" image="table" id="u1e-5L-l1D"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="QvG-yr-Q9g">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -922,10 +922,10 @@
             </objects>
             <point key="canvasLocation" x="1319" y="-1100"/>
         </scene>
-        <!--View Controller-->
+        <!--Capture Info View Controller-->
         <scene sceneID="li0-Qj-1Wy">
             <objects>
-                <viewController id="gvn-9y-1Pb" sceneMemberID="viewController">
+                <viewController id="gvn-9y-1Pb" customClass="VWWCaptureInfoViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="cSz-8M-AV1"/>
                         <viewControllerLayoutGuide type="bottom" id="jV7-PV-YDf"/>
@@ -1351,7 +1351,7 @@
         <scene sceneID="brc-5D-JlZ">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Ggr-2U-hLX" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Collection" image="second" id="6bl-s5-J1r"/>
+                    <tabBarItem key="tabBarItem" title="Collection" image="collection" id="6bl-s5-J1r"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="tt6-qD-tbg">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -1389,7 +1389,7 @@
         <scene sceneID="Uhu-qp-BiO">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="g68-VX-TZA" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Capture" id="jg6-tv-ehq"/>
+                    <tabBarItem key="tabBarItem" title="Capture" image="crosshair" id="jg6-tv-ehq"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="yjn-qj-QRq">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -1408,7 +1408,7 @@
         <scene sceneID="YG2-58-zAS">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="L7k-Yo-zWH" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Mixer" id="wsj-AY-iLX"/>
+                    <tabBarItem key="tabBarItem" title="Mixer" image="slider" id="wsj-AY-iLX"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="RSu-Yy-Gxv">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -1425,8 +1425,10 @@
         </scene>
     </scenes>
     <resources>
-        <image name="first" width="30" height="30"/>
-        <image name="second" width="30" height="30"/>
+        <image name="collection" width="30" height="30"/>
+        <image name="crosshair" width="30" height="30"/>
+        <image name="slider" width="30" height="30"/>
+        <image name="table" width="30" height="30"/>
     </resources>
     <color key="tintColor" red="0.159776473" green="1" blue="0.10153454990000001" alpha="1" colorSpace="calibratedRGB"/>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">

@@ -51,6 +51,10 @@
 		C66ECD46184C58FD003691D6 /* VWWAboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C66ECD45184C58FD003691D6 /* VWWAboutViewController.m */; };
 		C66ECD49184C5DC4003691D6 /* VWWExpandIntoFrameTransition.m in Sources */ = {isa = PBXBuildFile; fileRef = C66ECD48184C5DC4003691D6 /* VWWExpandIntoFrameTransition.m */; };
 		C6CFBABB184D9AA6002735AD /* VWWCaptureFromVideoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C6CFBABA184D9AA6002735AD /* VWWCaptureFromVideoViewController.m */; };
+		C6FC14B4185456040064208D /* VWWTableInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C6FC14B3185456040064208D /* VWWTableInfoViewController.m */; };
+		C6FC14B7185456110064208D /* VWWCollectionInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C6FC14B6185456110064208D /* VWWCollectionInfoViewController.m */; };
+		C6FC14BA185456200064208D /* VWWCaptureInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C6FC14B9185456200064208D /* VWWCaptureInfoViewController.m */; };
+		C6FC14BD185456300064208D /* VWWMixerInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C6FC14BC185456300064208D /* VWWMixerInfoViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -139,6 +143,14 @@
 		C66ECD48184C5DC4003691D6 /* VWWExpandIntoFrameTransition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VWWExpandIntoFrameTransition.m; sourceTree = "<group>"; };
 		C6CFBAB9184D9AA6002735AD /* VWWCaptureFromVideoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VWWCaptureFromVideoViewController.h; sourceTree = "<group>"; };
 		C6CFBABA184D9AA6002735AD /* VWWCaptureFromVideoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VWWCaptureFromVideoViewController.m; sourceTree = "<group>"; };
+		C6FC14B2185456040064208D /* VWWTableInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VWWTableInfoViewController.h; sourceTree = "<group>"; };
+		C6FC14B3185456040064208D /* VWWTableInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VWWTableInfoViewController.m; sourceTree = "<group>"; };
+		C6FC14B5185456110064208D /* VWWCollectionInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VWWCollectionInfoViewController.h; sourceTree = "<group>"; };
+		C6FC14B6185456110064208D /* VWWCollectionInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VWWCollectionInfoViewController.m; sourceTree = "<group>"; };
+		C6FC14B8185456200064208D /* VWWCaptureInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VWWCaptureInfoViewController.h; sourceTree = "<group>"; };
+		C6FC14B9185456200064208D /* VWWCaptureInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VWWCaptureInfoViewController.m; sourceTree = "<group>"; };
+		C6FC14BB185456300064208D /* VWWMixerInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VWWMixerInfoViewController.h; sourceTree = "<group>"; };
+		C6FC14BC185456300064208D /* VWWMixerInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VWWMixerInfoViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -170,6 +182,8 @@
 			children = (
 				C610CAEB18543A05002A3820 /* VWWMixerViewController.h */,
 				C610CAEC18543A05002A3820 /* VWWMixerViewController.m */,
+				C6FC14BB185456300064208D /* VWWMixerInfoViewController.h */,
+				C6FC14BC185456300064208D /* VWWMixerInfoViewController.m */,
 			);
 			name = Mixer;
 			sourceTree = "<group>";
@@ -339,6 +353,8 @@
 				C66E1706184C071E0008FAC1 /* Cell */,
 				C66E1702184C06730008FAC1 /* VWWColorsTableViewController.h */,
 				C66E1703184C06730008FAC1 /* VWWColorsTableViewController.m */,
+				C6FC14B2185456040064208D /* VWWTableInfoViewController.h */,
+				C6FC14B3185456040064208D /* VWWTableInfoViewController.m */,
 			);
 			name = Table;
 			sourceTree = "<group>";
@@ -359,6 +375,8 @@
 				C66ECD14184C1DF1003691D6 /* Cell */,
 				C66ECD11184C1DEA003691D6 /* VWWColorsCollectionViewController.h */,
 				C66ECD12184C1DEA003691D6 /* VWWColorsCollectionViewController.m */,
+				C6FC14B5185456110064208D /* VWWCollectionInfoViewController.h */,
+				C6FC14B6185456110064208D /* VWWCollectionInfoViewController.m */,
 			);
 			name = Collection;
 			sourceTree = "<group>";
@@ -407,6 +425,8 @@
 				C6CFBABA184D9AA6002735AD /* VWWCaptureFromVideoViewController.m */,
 				C610CAE718541CBE002A3820 /* VWWFloatingColorViewController.h */,
 				C610CAE818541CBF002A3820 /* VWWFloatingColorViewController.m */,
+				C6FC14B8185456200064208D /* VWWCaptureInfoViewController.h */,
+				C6FC14B9185456200064208D /* VWWCaptureInfoViewController.m */,
 			);
 			name = Capture;
 			sourceTree = "<group>";
@@ -564,16 +584,20 @@
 				C66ECD29184C41B7003691D6 /* VWWWelcomeViewController.m in Sources */,
 				C66ECD25184C2AE6003691D6 /* VWWColorCollectionReusableFlowView.m in Sources */,
 				C66ECD3E184C56DC003691D6 /* VWWShrinkTransition.m in Sources */,
+				C6FC14B4185456040064208D /* VWWTableInfoViewController.m in Sources */,
 				C6CFBABB184D9AA6002735AD /* VWWCaptureFromVideoViewController.m in Sources */,
 				C66ECD22184C2820003691D6 /* VWWColorCollectionViewCircleCell.m in Sources */,
 				C610CAED18543A05002A3820 /* VWWMixerViewController.m in Sources */,
 				C66ECD19184C1E11003691D6 /* VWWColorCollectionViewFlowCell.m in Sources */,
 				C66ECD31184C534F003691D6 /* VWWCaptureViewController.m in Sources */,
 				C66E1709184C07380008FAC1 /* VWWColorTableViewCell.m in Sources */,
+				C6FC14BD185456300064208D /* VWWMixerInfoViewController.m in Sources */,
 				C66ECD3D184C56DC003691D6 /* VWWSpringTransition.m in Sources */,
 				C610CAE918541CBF002A3820 /* VWWFloatingColorViewController.m in Sources */,
 				C66E16FC184BE2B30008FAC1 /* VWWUtility.m in Sources */,
+				C6FC14B7185456110064208D /* VWWCollectionInfoViewController.m in Sources */,
 				C66ECD1F184C228B003691D6 /* VWWColorCollectionViewCircleLayout.m in Sources */,
+				C6FC14BA185456200064208D /* VWWCaptureInfoViewController.m in Sources */,
 				C6311209184C68E200BE02BA /* VWWColorViewController.m in Sources */,
 				C66ECD34184C5395003691D6 /* VWWCaptureFromPhotoViewController.m in Sources */,
 				C66ECD42184C5736003691D6 /* VWWHorizontalFlipInteractiveTransition.m in Sources */,

@@ -47,8 +47,10 @@
 {
     [super viewDidLoad];
     self.crosshairView.delegate = self;
+    self.crosshairView.userInteractionEnabled = YES;
 //    self.colorContainerView.hidden = YES;
     self.colorContainerView.alpha = 0.0;
+
 
 }
 

@@ -50,6 +50,7 @@
     self.avqueue = dispatch_queue_create("com.vaporwarewolf.colorblind", NULL);
     self.colorContainerView.hidden = YES;
     self.colorContainerView.alpha = 0.0;
+    self.crosshairView.userInteractionEnabled = NO;
 }
 
 
