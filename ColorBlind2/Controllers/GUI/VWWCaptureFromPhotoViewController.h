@@ -8,6 +8,17 @@
 
 #import <UIKit/UIKit.h>
 
+
+@class VWWCaptureFromPhotoViewController;
+
+@protocol VWWCaptureFromPhotoViewControllerDelegate <NSObject>
+-(void)captureFromPhotoViewControllerToggleButtonTouchUpInside:(VWWCaptureFromPhotoViewController*)sender;
+@end
+
+
 @interface VWWCaptureFromPhotoViewController : UIViewController
+@property (nonatomic, weak) id <VWWCaptureFromPhotoViewControllerDelegate> delegate;
+-(void)showColorView;
+-(void)hideColorView;
 
 @end

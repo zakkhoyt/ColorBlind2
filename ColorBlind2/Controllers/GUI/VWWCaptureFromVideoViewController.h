@@ -9,5 +9,6 @@
 #import <UIKit/UIKit.h>
 
 @interface VWWCaptureFromVideoViewController : UIViewController
-
+-(void)showColorView;
+-(void)hideColorView;
 @end

@@ -115,7 +115,11 @@
     NSString *key = self.colorsKeys[closestIndex];
     return self.colorsDictionary[key];
 }
-
+-(VWWColor*)closestColorFromUIColor:(UIColor*)uiColor{
+    double r = 0, g = 0, b = 0, a = 0;
+    [uiColor getRed:&r green:&g blue:&b alpha:&a];
+    return [self closestColorFromRed:r green:g blue:b];
+}
 
 -(VWWColor*)complimentColor{
 //    // TODO: implement

@@ -5,11 +5,14 @@
 //  Created by Zakk Hoyt on 12/2/13.
 //  Copyright (c) 2013 Zakk Hoyt. All rights reserved.
 //
+// Some good stuff about augmented reality here: http://cmgresearch.blogspot.com/2010/10/augmented-reality-on-iphone-with-ios40.html
+
 
 #import "VWWCaptureFromVideoViewController.h"
 #import <AVFoundation/AVFoundation.h>
 #import "VWWColors.h"
 #import "VWWColor.h"
+#import "VWWCrosshairView.h"
 
 @interface VWWCaptureFromVideoViewController () <AVCaptureVideoDataOutputSampleBufferDelegate>
 @property dispatch_queue_t avqueue;
@@ -24,6 +27,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *greenLabel;
 @property (weak, nonatomic) IBOutlet UILabel *blueLabel;
 
+@property (weak, nonatomic) IBOutlet VWWCrosshairView *crosshairView;
 
 
 
@@ -52,6 +56,7 @@
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     
+    self.crosshairView.selectedPixel = self.crosshairView.center;
     
 }
 
@@ -92,6 +97,14 @@
     }];
 }
 
+-(void)hideColorView{
+    self.colorContainerView.hidden = YES;
+    self.colorContainerView.backgroundColor = self.view.backgroundColor;
+    [UIView animateWithDuration:0.3 animations:^{
+        self.colorContainerView.alpha = 0.0;
+    }];
+}
+
 
 -(BOOL)isCameraAvailable{
     NSArray *videoDevices = [AVCaptureDevice devicesWithMediaType:AVMediaTypeVideo];
@@ -127,12 +140,12 @@
         
         newCaptureVideoPreviewLayer.frame = view.bounds;
         [viewLayer addSublayer:newCaptureVideoPreviewLayer];
+        [self.cameraView bringSubviewToFront:self.crosshairView];
         
-        
-        CGRect bounds=view.layer.bounds;
-        newCaptureVideoPreviewLayer.videoGravity = AVLayerVideoGravityResizeAspectFill;
-        newCaptureVideoPreviewLayer.bounds=bounds;
-        newCaptureVideoPreviewLayer.position=CGPointMake(CGRectGetMidX(bounds), CGRectGetMidY(bounds));
+//        CGRect bounds=view.layer.bounds;
+//        newCaptureVideoPreviewLayer.videoGravity = AVLayerVideoGravityResizeAspectFill;
+//        newCaptureVideoPreviewLayer.bounds=bounds;
+//        newCaptureVideoPreviewLayer.position=CGPointMake(CGRectGetMidX(bounds), CGRectGetMidY(bounds));
         
         
         [session startRunning];

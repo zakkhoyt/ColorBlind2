@@ -10,7 +10,7 @@
 #import "VWWCaptureFromPhotoViewController.h"
 #import "VWWCaptureFromVideoViewController.h"
 
-@interface VWWCaptureViewController () <UINavigationControllerDelegate, UIImagePickerControllerDelegate, UICollisionBehaviorDelegate>{
+@interface VWWCaptureViewController () <UINavigationControllerDelegate, UIImagePickerControllerDelegate, UICollisionBehaviorDelegate, VWWCaptureFromPhotoViewControllerDelegate>{
     NSMutableArray* _views;
     UIGravityBehavior* _gravity;
     UIDynamicAnimator* _animator;
@@ -68,6 +68,8 @@
     return _hideStatusBars;
 }
 
+
+
 #pragma mark Private methods
 
 -(void)addCaptureViewControllers{
@@ -76,6 +78,7 @@
 
     
     self.photosViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"VWWCaptureFromPhotoViewController"];
+    self.photosViewController.delegate = self;
     [self addCaptureFromPhotoController:self.photosViewController offset:90];
 }
 
@@ -187,7 +190,7 @@
 
 
 -(void)attemptTopDock:(UIView*)view{
-    BOOL nearTopOfView = view.frame.origin.y < 100.0;
+    BOOL nearTopOfView = view.frame.origin.y < 40.0;
     if (nearTopOfView) {
         if (!_viewDocked) {
             _snap = [[UISnapBehavior alloc] initWithItem:view snapToPoint:self.view.center];
@@ -218,9 +221,10 @@
                 self.view.backgroundColor = [UIColor whiteColor];
 
                 if(view == self.photosViewController.view){
-                    
+                    [self.photosViewController  hideColorView];
                 }
                 else if(view == self.videoViewController.view) {
+                    [self.videoViewController hideColorView];
                     [self.view sendSubviewToBack:view];
                 }
             }];
@@ -235,6 +239,22 @@
             aView.alpha = alpha;
         }
     }
+}
+
+#pragma mark VWWCaptureFromPhotoViewControllerDelegate
+-(void)captureFromPhotoViewControllerToggleButtonTouchUpInside:(VWWCaptureFromPhotoViewController*)sender{
+//    _snap = [[UISnapBehavior alloc] initWithItem:self.photosViewController.view snapToPoint:self.view.center];
+//    [_animator addBehavior:_snap];
+//    [self setAlphaWhenViewDocked:self.photosViewController.view alpha:0.0];
+//    _viewDocked = YES;
+//    _hideStatusBars = YES;
+//    [UIView animateWithDuration:0.3 animations:^{
+//        [self setNeedsStatusBarAppearanceUpdate];
+//        self.navigationController.navigationBar.alpha = 0.0;
+//        self.tabBarController.tabBar.alpha = 0.0;
+//        [self.view bringSubviewToFront:self.photosViewController.view];
+//        self.view.backgroundColor = self.photosViewController.view.backgroundColor;
+//    }];
 }
 
 

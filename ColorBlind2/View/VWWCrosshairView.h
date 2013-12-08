@@ -8,6 +8,15 @@
 
 #import <UIKit/UIKit.h>
 
-@interface VWWCrosshairView : UIView
 
+
+@class VWWCrosshairView;
+
+@protocol VWWCrosshairViewDelegate <NSObject>
+-(void)crosshairViewTouchOccurredAtPoint:(CGPoint)point;
+@end
+
+@interface VWWCrosshairView : UIView
+@property (nonatomic, weak) id <VWWCrosshairViewDelegate> delegate;
+@property (nonatomic) CGPoint selectedPixel;
 @end

@@ -32,7 +32,7 @@
 // Returns a VWWColor in self.colors that most closely matches red green blue
 // Runtime O(x). 
 -(VWWColor*)closestColorFromRed:(float)red green:(float)green blue:(float)blue;
-    
+-(VWWColor*)closestColorFromUIColor:(UIColor*)uiColor;
 // Returns the closest opposite of currentColor. Math is done on r, g, b
 -(VWWColor*)complimentColor;
 
