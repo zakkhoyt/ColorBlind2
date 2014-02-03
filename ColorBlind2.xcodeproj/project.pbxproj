@@ -50,6 +50,7 @@
 		C66ECD42184C5736003691D6 /* VWWHorizontalFlipInteractiveTransition.m in Sources */ = {isa = PBXBuildFile; fileRef = C66ECD40184C5736003691D6 /* VWWHorizontalFlipInteractiveTransition.m */; };
 		C66ECD46184C58FD003691D6 /* VWWAboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C66ECD45184C58FD003691D6 /* VWWAboutViewController.m */; };
 		C66ECD49184C5DC4003691D6 /* VWWExpandIntoFrameTransition.m in Sources */ = {isa = PBXBuildFile; fileRef = C66ECD48184C5DC4003691D6 /* VWWExpandIntoFrameTransition.m */; };
+		C6AB0F9018A043DF00111C84 /* welcome.html in Resources */ = {isa = PBXBuildFile; fileRef = C6AB0F8F18A043DF00111C84 /* welcome.html */; };
 		C6CFBABB184D9AA6002735AD /* VWWCaptureFromVideoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C6CFBABA184D9AA6002735AD /* VWWCaptureFromVideoViewController.m */; };
 		C6FC14B4185456040064208D /* VWWTableInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C6FC14B3185456040064208D /* VWWTableInfoViewController.m */; };
 		C6FC14B7185456110064208D /* VWWCollectionInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C6FC14B6185456110064208D /* VWWCollectionInfoViewController.m */; };
@@ -141,6 +142,7 @@
 		C66ECD45184C58FD003691D6 /* VWWAboutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VWWAboutViewController.m; sourceTree = "<group>"; };
 		C66ECD47184C5DC4003691D6 /* VWWExpandIntoFrameTransition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VWWExpandIntoFrameTransition.h; sourceTree = "<group>"; };
 		C66ECD48184C5DC4003691D6 /* VWWExpandIntoFrameTransition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VWWExpandIntoFrameTransition.m; sourceTree = "<group>"; };
+		C6AB0F8F18A043DF00111C84 /* welcome.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = welcome.html; sourceTree = "<group>"; };
 		C6CFBAB9184D9AA6002735AD /* VWWCaptureFromVideoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VWWCaptureFromVideoViewController.h; sourceTree = "<group>"; };
 		C6CFBABA184D9AA6002735AD /* VWWCaptureFromVideoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VWWCaptureFromVideoViewController.m; sourceTree = "<group>"; };
 		C6FC14B2185456040064208D /* VWWTableInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VWWTableInfoViewController.h; sourceTree = "<group>"; };
@@ -410,6 +412,7 @@
 			children = (
 				C66ECD27184C41B7003691D6 /* VWWWelcomeViewController.h */,
 				C66ECD28184C41B7003691D6 /* VWWWelcomeViewController.m */,
+				C6AB0F8F18A043DF00111C84 /* welcome.html */,
 			);
 			name = Welcome;
 			sourceTree = "<group>";
@@ -546,6 +549,7 @@
 				C66ECD2B184C421F003691D6 /* about.html in Resources */,
 				C66E16C3184BDFA10008FAC1 /* Images.xcassets in Resources */,
 				C66E1700184BE46E0008FAC1 /* colors_complex.csv in Resources */,
+				C6AB0F9018A043DF00111C84 /* welcome.html in Resources */,
 				C66ECD2D184C455F003691D6 /* about.txt in Resources */,
 				C66E1701184BE46E0008FAC1 /* colors_simple.csv in Resources */,
 				C66E16B2184BDFA10008FAC1 /* InfoPlist.strings in Resources */,

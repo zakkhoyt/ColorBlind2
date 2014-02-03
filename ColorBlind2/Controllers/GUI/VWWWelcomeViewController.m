@@ -63,6 +63,26 @@ static NSString *VWWSegueWelcomeToAbout = @"VWWSegueWelcomeToAbout";
     
 }
 
+
+-(void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    
+    NSString *webviewString = @"<h3>Ever wonder what the exact color of an object is? Find out using"
+    @"ColorBlind. This app lets you explore the color spectrum various"
+    @"ways."
+    @"</h3>"
+    @"<ul>"
+    @"<li> Table: Browse the colors by name with a quick preview."
+    @"<li> Grid: Browse the colors by name with a quick preview."
+    @"<li> Sliders: Mix your own color with Red Green and Blue sliders."
+    @"<li> Picker: Select a pixel from a photo or live camera feed."
+    @"</ul>"
+    @"<h4>"
+    @"The list of colors used in this app was taken from <a href=\"http://en.wikipedia.org/wiki/List_of_colors\">wikipedia</a>";
+    [self.webView loadHTMLString:webviewString baseURL:nil];
+    
+}
+
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
