@@ -164,14 +164,14 @@ static NSString *VWWSegueTableToColor = @"VWWSegueTableToColor";
 
 #pragma mark UITableViewDataSource
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    VWW_LOG(@"returning %d", _datasource.count);
+    VWW_LOG(@"returning %lu", (unsigned long)_datasource.count);
     return _datasource.count;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     NSMutableDictionary* dictionary = _datasource[section];
     NSArray* array = dictionary[VWWColorsTableViewControllerColorKey];
-    VWW_LOG(@"returning %d", array.count);
+    VWW_LOG(@"returning %lu", (unsigned long)array.count);
     return array.count;
 }
 

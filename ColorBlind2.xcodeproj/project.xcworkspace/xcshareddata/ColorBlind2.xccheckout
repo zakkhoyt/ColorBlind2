@@ -5,36 +5,36 @@
 	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
 	<false/>
 	<key>IDESourceControlProjectIdentifier</key>
-	<string>6548EAC7-9BBC-4A93-B149-A266D0F2C749</string>
+	<string>5BE2F7E8-CFB0-460B-8423-402114E7F690</string>
 	<key>IDESourceControlProjectName</key>
 	<string>ColorBlind2</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
-		<key>6E9B9E8E-9AD6-40C9-A760-7F1F1E1F711B</key>
-		<string>ssh://github.com/zakkhoyt/ColorBlind2.git</string>
+		<key>31D219049CA6F47731728D28FC14127F44235091</key>
+		<string>ssh://github.com/zakkhoyt/Colorblind2</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
 	<string>ColorBlind2.xcodeproj/project.xcworkspace</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
-		<key>6E9B9E8E-9AD6-40C9-A760-7F1F1E1F711B</key>
+		<key>31D219049CA6F47731728D28FC14127F44235091</key>
 		<string>../..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
-	<string>ssh://github.com/zakkhoyt/ColorBlind2.git</string>
+	<string>ssh://github.com/zakkhoyt/Colorblind2</string>
 	<key>IDESourceControlProjectVersion</key>
-	<integer>110</integer>
+	<integer>111</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
-	<string>6E9B9E8E-9AD6-40C9-A760-7F1F1E1F711B</string>
+	<string>31D219049CA6F47731728D28FC14127F44235091</string>
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
 		<dict>
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.git</string>
 			<key>IDESourceControlWCCIdentifierKey</key>
-			<string>6E9B9E8E-9AD6-40C9-A760-7F1F1E1F711B</string>
+			<string>31D219049CA6F47731728D28FC14127F44235091</string>
 			<key>IDESourceControlWCCName</key>
-			<string>ColorBlind2</string>
+			<string>Colorblind2</string>
 		</dict>
 	</array>
 </dict>

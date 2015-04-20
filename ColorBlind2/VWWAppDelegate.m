@@ -13,10 +13,7 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    VWWColors *colors = [VWWColors sharedInstance];
-    NSString* path = [[NSBundle mainBundle] pathForResource:@"colors_complex" ofType:@"csv"];
-    NSLog(@"Initializing colors object from file %@", path);
-    [colors openColorsFileWithPath:path];
+    [VWWColors sharedInstance];
     
     return YES;
 }

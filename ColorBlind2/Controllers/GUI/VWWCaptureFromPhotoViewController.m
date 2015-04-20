@@ -211,7 +211,7 @@
 
 
 
-- (UIColor *) colorOfPoint:(CGPoint)point
+- (UIColor*)colorOfPoint:(CGPoint)point
 {
     unsigned char pixel[4] = {0};
     CGColorSpaceRef colorSpace = CGColorSpaceCreateDeviceRGB();

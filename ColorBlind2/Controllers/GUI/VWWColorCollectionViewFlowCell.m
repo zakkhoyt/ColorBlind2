@@ -44,9 +44,9 @@
     _color = color;
     _colorView.backgroundColor = self.color.uiColor;
     _nameLabel.text = self.color.name;
-    _redLabel.text = [NSString stringWithFormat:@"Red:%u", [_color hexFromFloat:_color.red]];
-    _greenLabel.text = [NSString stringWithFormat:@"Green:%u", [_color hexFromFloat:_color.green]];
-    _blueLabel.text = [NSString stringWithFormat:@"Blue:%u", [_color hexFromFloat:_color.blue]];
+    _redLabel.text = [NSString stringWithFormat:@"Red:%lu", (unsigned long)[_color hexFromFloat:_color.red]];
+    _greenLabel.text = [NSString stringWithFormat:@"Green:%lu", (unsigned long)[_color hexFromFloat:_color.green]];
+    _blueLabel.text = [NSString stringWithFormat:@"Blue:%lu", (unsigned long)[_color hexFromFloat:_color.blue]];
     _hexLabel.text = [NSString stringWithFormat:@"%@", [_color hexValue]];
 }
 

@@ -7,7 +7,6 @@
 //
 
 #import "VWWColors.h"
-#import "VWWFileReader.h"
 #import "VWWColor.h"
 
 @interface VWWColors ()
@@ -24,9 +23,19 @@
     static dispatch_once_t once;
     static id instance;
     dispatch_once(&once, ^{
-        instance = self.new;
+        instance = [[VWWColors alloc]init];
     });
     return instance;
+}
+
+- (instancetype)init
+{
+    self = [super init];
+    if (self) {
+        NSString* path = [[NSBundle mainBundle] pathForResource:@"colors_complex" ofType:@"csv"];
+        [self openColorsFileWithPath:path];
+    }
+    return self;
 }
 
 
@@ -34,7 +43,9 @@
     [self.colorsDictionary removeAllObjects];
     [self.colorsKeys removeAllObjects];
     
-    _colorsDictionary = [[VWWFileReader colorsFromFile:path]mutableCopy];
+    
+    
+    _colorsDictionary = [[self colorsFromFileAtPath:path]mutableCopy];
     if(self.colorsDictionary == nil || self.colorsDictionary.count == 0){
         VWW_LOG_WARN(@"Failed to load any colors from %@", path);
         return NO;
@@ -52,6 +63,52 @@
         self.currentColorKey = self.colorsKeys[0];
     }
     return YES;
+}
+
+-(NSDictionary*)colorsFromFileAtPath:(NSString*)path{
+    const NSUInteger kNameIndex = 0;
+    const NSUInteger kHexIndex = 1;
+    const NSUInteger kRedIndex = 2;
+    const NSUInteger kGreenIndex = 3;
+    const NSUInteger kBlueIndex = 4;
+    const NSUInteger kHueIndex = 5;
+    const NSUInteger kNumOfElementsPerLine = 6;
+    
+    
+    NSError* error;
+    NSString* fileContents = [NSString stringWithContentsOfFile:path encoding:NSASCIIStringEncoding error:&error];
+    NSArray* lines = [fileContents componentsSeparatedByString:@"\n"];
+    NSMutableDictionary* colors = [[NSMutableDictionary alloc]initWithCapacity:lines.count];
+    
+    VWW_LOG_TODO(@"add support for alpha and other color properties")
+    
+    // Each line in the file will look like this:
+    // "name, hex, red, green, blue, hue"
+    // And with values:
+    // string, string, 0-100, 0-100, 0-100, 0-255
+    for(NSString* line in lines){
+        NSArray* elements = [line componentsSeparatedByString:@","];
+        
+        if(elements.count != kNumOfElementsPerLine){
+            VWW_LOG_WARN(@"Invalid number of sections per line");
+            continue;
+        }
+        
+        NSString* name =    (NSString*)elements[kNameIndex];
+        NSString* hex =     (NSString*)elements[kHexIndex];
+        NSNumber* red =     (NSNumber*)elements[kRedIndex];
+        NSNumber* green =   (NSNumber*)elements[kGreenIndex];
+        NSNumber* blue =    (NSNumber*)elements[kBlueIndex];
+        NSNumber* hue =     (NSNumber*)elements[kHueIndex];
+        
+        
+        VWWColor* color = [[VWWColor alloc]initWithName:name hex:hex red:red.integerValue green:green.integerValue blue:blue.integerValue hue:hue];
+        colors[name] = color;
+        
+    }
+    
+    NSLog(@"Loaded %lu colors from colors.csv", (unsigned long)colors.allKeys.count);
+    return [NSDictionary dictionaryWithDictionary:colors];
 }
 
 
@@ -82,7 +139,7 @@
         VWWColor *color = self.colorsDictionary[key];
         return color;
     } else {
-        VWW_LOG_WARN(@"Requesting index that is greater than bounds: %d/%d", index, self.colorsDictionary.count);
+        VWW_LOG_WARN(@"Requesting index that is greater than bounds: %lu/%lu", (unsigned long)index, (unsigned long)self.colorsDictionary.count);
         return nil;
     }
 }
@@ -172,7 +229,7 @@
         return NO;
     }
 
-    float r = 0, g = 0, b = 0, a = 0;
+    double r = 0, g = 0, b = 0, a = 0;
     [color getRed:&r green:&g blue:&b alpha:&a];
     VWWColor *currentColor = [self closestColorFromRed:r green:g blue:b];
     if(currentColor == nil){

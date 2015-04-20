@@ -26,7 +26,6 @@
 		C66E16D4184BDFA10008FAC1 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = C66E16D2184BDFA10008FAC1 /* InfoPlist.strings */; };
 		C66E16D6184BDFA10008FAC1 /* ColorBlind2Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = C66E16D5184BDFA10008FAC1 /* ColorBlind2Tests.m */; };
 		C66E16F2184BE0990008FAC1 /* VWWColors.m in Sources */ = {isa = PBXBuildFile; fileRef = C66E16EA184BE0990008FAC1 /* VWWColors.m */; };
-		C66E16F3184BE0990008FAC1 /* VWWFileReader.m in Sources */ = {isa = PBXBuildFile; fileRef = C66E16EB184BE0990008FAC1 /* VWWFileReader.m */; };
 		C66E16F4184BE0990008FAC1 /* VWWColor.m in Sources */ = {isa = PBXBuildFile; fileRef = C66E16EC184BE0990008FAC1 /* VWWColor.m */; };
 		C66E16FC184BE2B30008FAC1 /* VWWUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = C66E16FB184BE2B30008FAC1 /* VWWUtility.m */; };
 		C66E1700184BE46E0008FAC1 /* colors_complex.csv in Resources */ = {isa = PBXBuildFile; fileRef = C66E16FE184BE46E0008FAC1 /* colors_complex.csv */; };
@@ -97,9 +96,7 @@
 		C66E16D3184BDFA10008FAC1 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		C66E16D5184BDFA10008FAC1 /* ColorBlind2Tests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ColorBlind2Tests.m; sourceTree = "<group>"; };
 		C66E16EA184BE0990008FAC1 /* VWWColors.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VWWColors.m; sourceTree = "<group>"; };
-		C66E16EB184BE0990008FAC1 /* VWWFileReader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VWWFileReader.m; sourceTree = "<group>"; };
 		C66E16EC184BE0990008FAC1 /* VWWColor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VWWColor.m; sourceTree = "<group>"; };
-		C66E16EE184BE0990008FAC1 /* VWWFileReader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VWWFileReader.h; sourceTree = "<group>"; };
 		C66E16EF184BE0990008FAC1 /* VWWColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VWWColor.h; sourceTree = "<group>"; };
 		C66E16F0184BE0990008FAC1 /* VWWColors.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VWWColors.h; sourceTree = "<group>"; };
 		C66E16FA184BE2B30008FAC1 /* VWWUtility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VWWUtility.h; path = Utilities/VWWUtility.h; sourceTree = "<group>"; };
@@ -323,8 +320,6 @@
 				C66E16EC184BE0990008FAC1 /* VWWColor.m */,
 				C66E16F0184BE0990008FAC1 /* VWWColors.h */,
 				C66E16EA184BE0990008FAC1 /* VWWColors.m */,
-				C66E16EE184BE0990008FAC1 /* VWWFileReader.h */,
-				C66E16EB184BE0990008FAC1 /* VWWFileReader.m */,
 			);
 			path = "Non-GUI";
 			sourceTree = "<group>";
@@ -514,7 +509,7 @@
 			isa = PBXProject;
 			attributes = {
 				CLASSPREFIX = VWW;
-				LastUpgradeCheck = 0500;
+				LastUpgradeCheck = 0630;
 				ORGANIZATIONNAME = "Zakk Hoyt";
 				TargetAttributes = {
 					C66E16C7184BDFA10008FAC1 = {
@@ -574,7 +569,6 @@
 			files = (
 				C6311211184C698700BE02BA /* VWWCrosshairView.m in Sources */,
 				C66E16B4184BDFA10008FAC1 /* main.m in Sources */,
-				C66E16F3184BE0990008FAC1 /* VWWFileReader.m in Sources */,
 				C66E16B8184BDFA10008FAC1 /* VWWAppDelegate.m in Sources */,
 				C66E1704184C06730008FAC1 /* VWWColorsTableViewController.m in Sources */,
 				C66ECD1C184C1E25003691D6 /* VWWColorCollectionViewFlowLayout.m in Sources */,
@@ -659,7 +653,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -698,7 +691,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -756,7 +748,6 @@
 		C66E16DD184BDFA10008FAC1 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/ColorBlind2.app/ColorBlind2";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
@@ -779,7 +770,6 @@
 		C66E16DE184BDFA10008FAC1 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/ColorBlind2.app/ColorBlind2";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",

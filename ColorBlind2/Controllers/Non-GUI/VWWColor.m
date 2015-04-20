@@ -69,9 +69,9 @@
 }
 
 -(NSString*)hexValue{
-    NSString *redString = [NSString stringWithFormat:@"%02x", [self hexFromFloat:self.red]];
-    NSString *greenString = [NSString stringWithFormat:@"%02x", [self hexFromFloat:self.green]];
-    NSString *blueString = [NSString stringWithFormat:@"%02x", [self hexFromFloat:self.blue]];
+    NSString *redString = [NSString stringWithFormat:@"%02lx", (unsigned long)[self hexFromFloat:self.red]];
+    NSString *greenString = [NSString stringWithFormat:@"%02lx", (unsigned long)[self hexFromFloat:self.green]];
+    NSString *blueString = [NSString stringWithFormat:@"%02lx", (unsigned long)[self hexFromFloat:self.blue]];
     NSString *hexString = [NSString stringWithFormat:@"0x%@%@%@", redString, greenString, blueString];
     return [hexString uppercaseString];
 }
