@@ -61,6 +61,7 @@ static NSString *VWWSegueTableToColor = @"VWWSegueTableToColor";
 
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
+    self.navigationController.navigationBarHidden = YES;
     [self.colorsTableView reloadData];
     
 }

@@ -43,6 +43,7 @@
 
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
+    self.navigationController.navigationBarHidden = NO;
     _colorView.backgroundColor = _color.uiColor;
     _nameLabel.text = _color.name;
     _redLabel.text = [NSString stringWithFormat:@"Red:%lu", (unsigned long)[_color hexFromFloat:_color.red]];
